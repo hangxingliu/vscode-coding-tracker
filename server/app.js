@@ -133,7 +133,6 @@ new Promise((next) =>
 
 
 function tokenMiddleware(req, res, next) {
-	console.log(req.body);
 	return req.body.token !== Program.token ? returnError(res, 'token is invalid') : next();
 }
 
