@@ -1,0 +1,5 @@
+# TODO
+
+- [ ] Add lines count and character count tracking.
+- [ ] Change storage struct, using string joined Hour, Minute and Second instead of timestamp on field `time`
+- [ ] Tracking data uploaded should use Year-Month-Day-Hour-Minute format instead of `time`

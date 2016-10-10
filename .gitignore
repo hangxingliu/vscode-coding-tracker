@@ -1,0 +1,5 @@
+/node_modules
+/server/database
+/flowchart/generateImage.cmd
+/flowchart/helper.html
+/flowchart/helper.js

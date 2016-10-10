@@ -1,0 +1,126 @@
+digraph main {
+	rankdir =TB;
+	splines=ortho;
+	layout=dot;
+	node[shape=box]
+
+	subgraph cluster_event {
+		label="Event:";
+		node [shape=none]
+		event_openVSCode [label="Open VSCode"];
+		event_activeChange [label="Active editor change"];
+		event_edit [label="Document content change"];
+		event_closeVSCode [label="Close VSCode"];
+	}
+	subgraph functions{
+		subgraph cluster_func_uploadOpen {
+			label ="上传查看记录(open)";
+			node [shape=box]
+
+			func_uploadOpen_start [shape=point]
+			func_uploadOpen_start_2 [label="start" ];
+			func_uploadOpen_end [label="end"];
+			func_uploadOpen_start->func_uploadOpen_start_2
+
+			after_upload1 [label="openTime = 目前时间"]
+
+			func_uploadOpen_start_2->"上传查看记录至服务器"->after_upload1->func_uploadOpen_end;
+		}
+
+		subgraph cluster_func_uploadCoding {
+			label ="上传编辑记录(code)";
+			node [shape=box]
+
+			func_uploadCoding_start [shape=point]
+			func_uploadCoding_start_2 [label="start"];
+			func_uploadCoding_end [label="end"];
+			func_uploadCoding_start->func_uploadCoding_start_2
+
+			after_upload2 [label="{ firstCodingTime = 0| codingLong = 0| lastCodingTime = 0}", shape=record]
+
+			func_uploadCoding_start_2->"上传编辑记录至服务器"->after_upload2->func_uploadCoding_end;
+		}
+	}
+
+	subgraph cluster_func_main1 {
+		cond1 [label="activeDocument != null" shape=diamond]
+		cond1_param1 [label="var nowDocument = 目前(切换至)查看的文档"]
+		cond1_param2 [label="var nowDocument = null" ]
+		cond1_param1->cond1_param2[style=dotted arrowhead=none]
+		{rank=same; cond1_param1 cond1_param2}
+
+		event_openVSCode->cond1_param1
+		event_activeChange->cond1_param1->cond1
+		event_closeVSCode->cond1_param2->cond1
+		cond1->cond1_yes[label=yes]
+		cond1_yes[label="切换前存在文档\n    所以在切换到新的文档前需要上传&清空旧文档的记录  " style=dashed]
+		cond1_yes->cond2
+		cond1->cond3[label=no]
+
+		cond2 [label="openTime < 目前时间 - 5000\n 打开时间超过5s需要上传查看记录" shape=diamond]
+		cond2_yes [label="<f0>  调用|<f1> 上传查看记录  " shape=record]
+		cond2->cond2_yes[label=yes]
+		cond2_yes->func_uploadOpen_start[style=dashed arrowhead=none]
+		cond2_yes->cond3
+		cond2->cond3[label=no]
+
+		cond3 [label="codingLong > 0\n存在编辑时间需要上传编辑记录" shape=diamond]
+		cond3_yes [label="<f0>  调用|<f1> 上传编辑记录  " shape=record]
+		cond3->cond3_yes[label=yes]
+		cond3_yes->func_uploadCoding_start[style=dashed arrowhead=none concentrate=true]
+		cond3_yes->initTrack
+		cond3->initTrack[label=no]
+
+		initTrack[ 
+			label="{ \n 记录新的文档 并 清空旧的记录 \n|
+			activeDocument = nowDocument|
+			openTime = 目前时间|
+			firstCodingTime = 0|
+			codingLong = 0|
+			lastCodingTime = 0 }" 
+			shape=record]
+		initTrack_end[label=end shape=ellipse]
+		cond1_param1->initTrack[style=dotted arrowhead=none]
+		initTrack->initTrack_end
+	}
+
+	subgraph cluster_func_main2{
+
+		cond4 [label="lastCodingTime > 目前时间 - 1000" shape=diamond]
+		cond4_yes [label="  距离上次内容更改时间过短(小于1s)  \n不处理并丢弃该事件" style=dashed]
+		cond4_yes_end[label=end shape=ellipse]
+		event_edit->cond4
+		cond4->cond4_yes[label=yes]
+		cond4_yes->cond4_yes_end
+
+		cond4->cond5[label=no]
+
+		cond5 [label="firstCodingTime == 0\n还没有记录该文件的第一次修改时间" shape=diamond]
+		cond5_yes [label="firstCodingTime = 目前时间"]
+		cond5->cond5_yes[label=yes]
+		cond5_yes->cond6
+		cond5->cond6[label=no]
+		
+		cond6 [label="lastCodingTime < 目前时间 - 30 * 1000" shape=diamond]
+		cond6_yes [label="  上次修改距离现在太久了(大于30S)  \n  需要上传一次编辑记录并重新开始记录编辑记录  "]
+		cond6_yes_then [label=" 调用| 上传编辑记录" shape=record]
+		cond6->cond6_yes[label=yes]
+		cond6_yes_then->func_uploadCoding_start[style=dashed arrowhead=none concentrate=true]
+		cond6_yes->cond6_yes_then
+		cond6_yes_then->"firstCodingTime = 目前时间"->continueCodingTrack
+		cond6->continueCodingTrack[label=no]
+
+		continueCodingTrack[label="{ 增加编辑时间记录| codingLong += 1000| lastCodingTime = 目前时间}" shape=record]
+
+		continueCodingTrack_end[label=end shape=ellipse]
+		continueCodingTrack->continueCodingTrack_end
+	}
+
+	// {rank=same; func_uploadOpen_start cond2_yes}
+	// {rank=same; func_uploadCoding_start cond3_yes cond6_yes}
+
+	// {rank=max; func_uploadOpen_start func_uploadCoding_start}
+	// {clusterrank=same;cluster_func_main1 cluster_func_main2}
+	// {clusterrank=same;cluster_func_uploadOpen cluster_func_uploadCoding}
+
+}

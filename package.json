@@ -1,0 +1,42 @@
+{
+    "name": "vscode-coding-tracker",
+    "displayName": "Coding Tracker",
+    "description": "A coding activities tracker(time, file, type)",
+    "version": "0.0.1",
+    "license": "GPL-3.0",
+    "publisher": "hangxingliu",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": ["*"],
+    "main": "./extension",
+    "contributes": {
+
+        "configuration": {
+            "type": "object",
+            "title": "Coding Tracker configuration",
+            "properties": {
+                "codingTracker.uploadToken": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Your tracker server upload token"
+                },
+                "codingTracker.serverURL": {
+                    "type": "string",
+                    "default": "http://127.0.0.1:10345/",
+                    "description": "Your tracker server URL"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "vscode": "^0.11.0",
+        "request": "*"
+    }
+}
