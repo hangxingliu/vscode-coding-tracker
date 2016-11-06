@@ -5,6 +5,7 @@
     "version": "0.0.1",
     "license": "GPL-3.0",
     "publisher": "hangxingliu",
+    "author": "hangxingliu",
     "engines": {
         "vscode": "^1.0.0"
     },

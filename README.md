@@ -15,6 +15,7 @@ and copy this project folder into the extension folder of vscode
 3. Configurating the upload token in the vscode(configuration 
 item: `codingTracker.uploadToken`) to your `$TOKEN` you specified when 
 you launched the server script.
+
 ## File List
 
 ### Extension files

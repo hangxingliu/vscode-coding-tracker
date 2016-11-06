@@ -1,0 +1,25 @@
+{
+  "name": "vscode-coding-tracker-server",
+  "version": "0.0.1",
+  "description": "Visual Studio Code Coding Tracker Server Script",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "keywords": [
+    "vscode",
+    "server",
+    "express"
+  ],
+  "author": "hangxingliu",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "express": "*",
+    "commander": "*",
+    "colors": "*",
+    "path": "*",
+    "fs-extra": "*",
+    "morgan": "*",
+    "body-parser": "*"
+  }
+}
