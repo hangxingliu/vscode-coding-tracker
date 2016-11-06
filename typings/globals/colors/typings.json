@@ -1,8 +1,0 @@
-{
-  "resolution": "main",
-  "tree": {
-    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/b1546040789c7f2da20ac97067837e63182f6e16/colors/colors.d.ts",
-    "raw": "registry:dt/colors#0.6.0-1+20160914114039",
-    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/b1546040789c7f2da20ac97067837e63182f6e16/colors/colors.d.ts"
-  }
-}

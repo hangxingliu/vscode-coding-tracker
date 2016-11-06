@@ -41,7 +41,12 @@
         "postinstall": "node ./node_modules/vscode/bin/install"
     },
     "devDependencies": {
-        "vscode": "^0.11.0",
-        "request": "*"
+        "vscode": "^0.11.0"
+    },
+    "dependencies": {
+        "colors": "*",
+        "fs-extra": "*",
+        "request": "*",
+        "node": "*"
     }
 }
