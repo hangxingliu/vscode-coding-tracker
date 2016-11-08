@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "node app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "preinstall": "npm i express commander colors path fs-extra morgan body-parser"
   },
   "keywords": [
     "vscode",
@@ -13,14 +14,5 @@
     "express"
   ],
   "author": "hangxingliu",
-  "license": "GPL-3.0",
-  "dependencies": {
-    "express": "*",
-    "commander": "*",
-    "colors": "*",
-    "path": "*",
-    "fs-extra": "*",
-    "morgan": "*",
-    "body-parser": "*"
-  }
+  "license": "GPL-3.0"
 }

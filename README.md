@@ -32,7 +32,11 @@ configurations:
 0. Add visisble tracking data analyze tools.
 1. Add more tracking data to server.
 
-## 0.1.0 Changelog
+## 0.1.1 Changelog
+
+0. Change folder and project structure to adapt npm and vscode extension
+
+## 0.1.0
 
 0. Add an icon to extension
 1. **Fixed the severe bug** (could not to use this extension because dependencies list is incompletion)

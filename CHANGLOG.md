@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+## 0.1.1 Changelog
+
+0. Change folder and project structure to adapt npm and vscode extension
+
 ## 0.1.0
 
 0. Add an icon to extension
