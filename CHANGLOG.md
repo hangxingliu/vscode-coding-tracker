@@ -1,6 +1,10 @@
 ## CHANGELOG
 
-## 0.1.1 Changelog
+## 0.1.2
+
+0. Fixed a bug around node module require in Linux must care about character case.
+
+## 0.1.1
 
 0. Change folder and project structure to adapt npm and vscode extension
 

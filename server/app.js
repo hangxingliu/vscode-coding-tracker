@@ -3,7 +3,7 @@
  *
  * Author: LiuYue
  * Github: https://github.com/hangxingliu
- * Version: 0.1.0
+ * Version: 0.1.2
  * License: GPL-3.0
  */
 
@@ -66,7 +66,7 @@ var log = require('./lib/Log'),
 	storage = require('./lib/Storage'),
 	checker = require('./lib/ParamsChecker'),
 	errorHandler = require('./lib/Handler404and500'),
-	tokenChecker = require('./lib/tokenMiddleware'),
+	tokenChecker = require('./lib/TokenMiddleware'),
 	Program = require('./lib/Launcher');
 
 //Express Server Object
