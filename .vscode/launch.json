@@ -17,6 +17,11 @@
             "runtimeExecutable": "${execPath}",
             "args": ["--extensionDevelopmentPath=${workspaceRoot}", "--extensionTestsPath=${workspaceRoot}/test" ],
             "stopOnEntry": false
+        },
+        {
+            "name": "Launch Tracker Server",
+            "type": "node",
+            "request": "attach" 
         }
     ]
 }

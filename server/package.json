@@ -1,10 +1,11 @@
 {
   "name": "vscode-coding-tracker-server",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Visual Studio Code Coding Tracker Server Script",
   "main": "app.js",
   "scripts": {
-    "test": "node app.js"
+    "test": "node app.js",
+    "start": "node app.js"
   },
   "keywords": [
     "vscode",

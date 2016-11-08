@@ -5,55 +5,56 @@ codeing file type, expenditure of file in a project
 
 ## How To Use
 
-1. Installing this extension by command `ext install ...`(I have not upload 
-this extension to the marketplace of vscode) or execute the command `npm i`
-and copy this project folder into the extension folder of vscode
-(Windows path: `%USERPROFILE%\.vscode\extensions`)
-2. Launching the server script(`server/app.js`) by using `node app.js -t $TOKEN`
-(replace the `$TOKEN` to a specified string) under the foler `server` 
- and you can also get the server script help by using `node app.js -h`
-3. Configurating the upload token in the vscode(configuration 
-item: `codingTracker.uploadToken`) to your `$TOKEN` you specified when 
-you launched the server script.
+### Installing extension to your VSCode
+
+`ext install vscode-coding-tracker`   
+or search `vscode-coding-tracker` in the extensions panel and click Install button.
+
+### Launching your tracking server(Local or Remote)
+
+1. Server script is under the folder `server`    
+(You can find it on your local extension folder **`%USERPROFILE%/.vscode/hangxingliu.vscode-coding-tracker-0.1.0`**)   
+or (**[My Github repository server folder](https://github.com/hangxingliu/vscode-coding-tracker/tree/master/server)**)
+2. Install server script by `npm i` under the folder `server`
+3. Launch the server script by using commander `node app.js -t ${YOUR_TOKEN}`   
+(**replace the `${YOUR_TOKEN}` to a specified string**) under the foler `server`   
+and you can also get the server script help by using `node app.js -h`
+
+### Configurating the upload token and your server address in your vscode
+
+configurations:
+
+- `codingTracker.serverURL` (set up such as "http://localhost:10345")
+- `codingTracker.uploadToken` (set up such as "123456")
+
+## 0.2.0 (Expectation)
+
+0. Add visisble tracking data analyze tools.
+1. Add more tracking data to server.
+
+## 0.1.0 Changelog
+
+0. Add an icon to extension
+1. **Fixed the severe bug** (could not to use this extension because dependencies list is incompletion)
+2. Optimized tracking data upload.
+3. Support upload configurations take effect after change configurations in settings.json without restart VSCode
+4. Upgrade upload object structure version and storage version to 2.0,   
+remove unnecessary field and change a time(date) field format to avoid time difference between server and client.
+5. Optimized the server script performance and structure.
 
 ## File List
 
-### Extension files
-
-- `extension.js` This VSCode extension main source file
-- `lib/Log.js` Log module file be used to controlling log output
-- `lib/VSCodeHelper.js` VSCode extension helper module be used to using vscode API easy
-- `.vscodeignore` VSCode extension ignore list file(VSCode will doesn't copy these file 
-when install this extension)
-- `package.json` VSCode extension and NPM information file be used to defining 
-vscode extension commands and configurations, declaring the dependent module of this extension.
-
-### Server side files
-
-- `server/app.js` A simple server program script be used to receving 
-the data uploaded by extension
-- `server/database/*.*` Data of your vscode using track
-
-### Other files
-
-- `flowchart/flow.dot` A flow chart diagrammatized the main process of 
-this extension dot language source
-- `flowchart/flow.svg` a flow chart svg image be generated from `flow.dot`
-- `typings/*.*` Many typescript template downloaded by `typings` and 
-be used to vscode intellisense
-- `.vscode/*.*` the vscode configurations of this project
-- `.gitignore` git ignore files list
-- `jsconfig.json` vscode javascript intellisense configuration file
-- `LICENSE` the opensource license file of this project
-(include extension and server script)
-- `CHANGELOG` the changelog of this project
-- `TODO` TODO list of features I want to add in and the bugs I need to fix
-- `README.md` the file you are reading now.
+redirect to [FILES.md](FILES.md)
 
 ## Author
 
 [LiuYue](https://github.com/hangxingliu)
 
+## Thanks
+
+This extension icon from [emojione](http://emojione.com/), This project help me a lot of (bkz I dont need how to use PS and dont have art sense).
+
 ## License
 
-[GPL-3.0](LICENSE)
+- Extension(part except icon) and server scripts: [GPL-3.0](LICENSE)
+- Extension Icon[CC-BY 4.0](http://emojione.com/licensing/)

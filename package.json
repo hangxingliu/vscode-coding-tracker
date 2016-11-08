@@ -2,10 +2,11 @@
     "name": "vscode-coding-tracker",
     "displayName": "Coding Tracker",
     "description": "A coding activities tracker(time, file, type)",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "license": "GPL-3.0",
     "publisher": "hangxingliu",
     "author": "hangxingliu",
+    "icon": "images/icon.png",
     "engines": {
         "vscode": "^1.0.0"
     },
@@ -38,7 +39,8 @@
         "url": "https://github.com/hangxingliu/vscode-coding-tracker"
     },
     "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install"
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "install-types": "cd types && npm i"
     },
     "devDependencies": {
         "vscode": "^0.11.0"

@@ -1,16 +1,16 @@
-var vscode = require('vscode'),
-    Path = require('path'),
-    Request = require('request'),
-    ext = require('./lib/VSCodeHelper'),
-    log = require('./lib/Log');
+var vscode      = require('vscode'),
+    Path        = require('path'),
+    Request     = require('request'),
+    ext                     = require('./lib/VSCodeHelper'),
+    uploader                = require('./lib/Uploader'),
+    log                     = require('./lib/Log'),
+    UploadObjectGenerator   = require('./lib/UploadObjectGenerator');
 //  log.setDebug(false);
 
-var baseUploadObject = {
-    version: '1.0',
-    token: '', type: '', time: 0, long: 0, lang: '', file: '', proj: '', proj_path: ''
-};
-var uploadURL = '',
-    activeDocument,
+
+var activeDocument,
+    uploadObjectGenerator,
+    //Tracking data, record document open time, first coding time and last coding time and coding time long
     trackData = {
         openTime: 0,
         firstCodeingTime: 0,
@@ -18,54 +18,23 @@ var uploadURL = '',
         lastCodingTime: 0
     };
 
-//Upload tracking data
-function upload(data) {
-    Request(uploadURL, {
-        method: 'POST', form: data, headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8' }
-    }, (err, res, bd) => {
-        if (err) return ext.showSingleErrorMsg('Could not upload coding record, Because: ' + err.stack);
-        var retObj;
-        try { 
-            retObj = JSON.parse(bd);
-        } catch (err) {
-            return ext.showSingleErrorMsg('Upload response is bad!(Could not convert to JSON)');
-        }
-        if (retObj.error)
-            return ext.showSingleErrorMsg('Upload error: ' + retObj.error);
-        log.d('Upload success!');
-    })
-}
-//create a upload tracking data object from specified type, happend time and long
-function getUploadObject(type, time, long) {
-    var data = cloneBaseUploadObject(),
-        uri = activeDocument.uri;
-    data.type = type;
-    data.time = time;
-    data.long = long;
-    data.lang = activeDocument.languageId;
-    data.file = uri.scheme == 'file' ? vscode.workspace.asRelativePath(uri.fsPath) : uri.scheme; 
-    return data;
-
-    function cloneBaseUploadObject() {
-        var ret = {};
-        for (var i in baseUploadObject) ret[i] = baseUploadObject[i];
-        return ret;
-    }
-}
 //Uploading open track data
 function uploadOpenTrackData(now) {
     var long = now - trackData.openTime,
-        data = getUploadObject('open', trackData.openTime, long);
-    process.nextTick(() => upload(data));
+        data = uploadObjectGenerator.gen('open', activeDocument, trackData.openTime, long);
+    process.nextTick(() => uploader.upload(data));
     //Retracking file open time
     trackData.openTime = now;
 }
 //Uploading coding track data and retracking coding track data
 function uploadCodingTrackData() {
-    var data = getUploadObject('code', trackData.firstCodeingTime, trackData.codingLong);
-    process.nextTick(() => upload(data));
+    var data = uploadObjectGenerator.gen('code', activeDocument, trackData.firstCodeingTime,
+        trackData.codingLong);
+    process.nextTick(() => uploader.upload(data));
     //Retracking coding track data
-    trackData.codingLong = trackData.lastCodingTime = trackData.firstCodeingTime = 0;    
+    trackData.codingLong =
+        trackData.lastCodingTime =
+        trackData.firstCodeingTime = 0;    
 }
 
 //Handler VSCode Event
@@ -107,25 +76,30 @@ var EventHandler = {
     }
 }
 
+function updateConfigurations() {
+     //CodingTracker Configuration
+    var configurations = ext.getConfig('codingTracker'),
+        uploadToken = String(configurations.get('uploadToken')),
+        uploadURL = String(configurations.get('serverURL'));
+    uploadURL = (uploadURL.endsWith('/') ? uploadURL : (uploadURL + '/')) + 'ajax/upload';
+    uploader.set(uploadURL, uploadToken);
+}
+
 
 function activate(context) {
 
     //Declare for add disposable inside easy
-    var subscriptions = context.subscriptions,
-        //CodingTracker Configuration
-        configurations =  ext.getConfig('codingTracker');
+    var subscriptions = context.subscriptions;
     
-    //Binding project information into baseUploadObject
-    var proj_path = vscode.workspace.rootPath;
-    baseUploadObject.proj_path = proj_path;
-    baseUploadObject.proj = Path.basename(proj_path);
+    uploadObjectGenerator = new UploadObjectGenerator(vscode.workspace.rootPath);
 
-    //Binding upload token into baseUploadObject
-    baseUploadObject.token = String(configurations.get('uploadToken') );
+    //Initialize Uploader Module
+    uploader.init(context);
+    //Update configurations first time
+    updateConfigurations();
 
-    //Setting uploadURL from Configuration
-    uploadURL = String(configurations.get('serverURL'));
-    uploadURL = (uploadURL.endsWith('/') ? uploadURL : (uploadURL + '/')) + 'ajax/upload';
+    //Listening workspace configurations change    
+    vscode.workspace.onDidChangeConfiguration(updateConfigurations);
 
     //Tracking the file display when vscode open
     EventHandler.onActiveFileChange( (vscode.window.activeTextEditor || {}).document);
