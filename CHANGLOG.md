@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+## 0.1.3
+
+0. Modified the log module, removed export log object to global variable "Log" (because sometimes it lead to a vscode exception)
+
 ## 0.1.2
 
 0. Fixed a bug around node module require in Linux must care about character case.
