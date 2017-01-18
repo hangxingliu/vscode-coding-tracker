@@ -24,7 +24,12 @@ module.exports = {
 		}
 	}
 };
-
+function formatDate(date) {
+  let pad = (num) => { return (num < 10 ? '0' : '') + num }
+	return date.getFullYear().toString().substring(2) + 
+	       pad(date.getMonth() + 1) + 
+				 pad(date.getDate());
+}
 
 function getStorableData(data) {
 	var ret = [
@@ -39,5 +44,5 @@ function getStorableData(data) {
 	return ret.join(' ') + '\n';
 }
 function getStorageFilePath(paramTime) {
-	return Path.join(storagePath, paramTime.slice(0, 5).concat('.db'));
+	return Path.join(storagePath, formatDate(new Date()).concat('.txt'));
 }
