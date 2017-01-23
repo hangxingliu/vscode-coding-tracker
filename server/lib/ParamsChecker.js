@@ -1,5 +1,4 @@
-var required = ['version', 'token', 'type', 'time', 'long', 'lang', 'file', 'proj'],
-	dateRange = [null, null, [1, 31, 'day'], [0, 23, 'hour'], [0, 59, 'mintues'], [0, 59, 'seconds']];
+var required = ['version', 'token', 'type', 'time', 'long', 'lang', 'file', 'proj', 'pcid'];
 module.exports = function (params) {
 	for(var i in required)
 		if (typeof params[required[i]] == 'undefined')

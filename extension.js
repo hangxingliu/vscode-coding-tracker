@@ -13,7 +13,7 @@ var activeDocument,
     //Tracking data, record document open time, first coding time and last coding time and coding time long
     trackData = {
         openTime: 0,
-        firstCodeingTime: 0,
+        firstCodingTime: 0,
         codingLong: 0,
         lastCodingTime: 0
     };
@@ -28,13 +28,13 @@ function uploadOpenTrackData(now) {
 }
 //Uploading coding track data and retracking coding track data
 function uploadCodingTrackData() {
-    var data = uploadObjectGenerator.gen('code', activeDocument, trackData.firstCodeingTime,
+    var data = uploadObjectGenerator.gen('code', activeDocument, trackData.firstCodingTime,
         trackData.codingLong);
     process.nextTick(() => uploader.upload(data));
     //Retracking coding track data
     trackData.codingLong =
         trackData.lastCodingTime =
-        trackData.firstCodeingTime = 0;    
+        trackData.firstCodingTime = 0;    
 }
 
 //Handler VSCode Event
@@ -55,7 +55,7 @@ var EventHandler = {
         activeDocument = ext.cloneTextDocumentObject(doc);
         //Retracking file open time again (Prevent has not retracked open time when upload open tracking data has been called)
         trackData.openTime = now;
-        trackData.codingLong = trackData.lastCodingTime = trackData.firstCodeingTime = 0;  
+        trackData.codingLong = trackData.lastCodingTime = trackData.firstCodingTime = 0;  
     },
     onFileCoding: () => {
         var now = Date.now();
@@ -63,26 +63,29 @@ var EventHandler = {
         if (now - 1000 < trackData.lastCodingTime)
             return;
         //If is first time coding in this file, record time
-        if (!trackData.firstCodeingTime)
-            trackData.firstCodeingTime = now;
+        if (!trackData.firstCodingTime)
+            trackData.firstCodingTime = now;
         //If too long time to recoding, so upload old coding track and retracking
         else if (trackData.lastCodingTime < now - 30000) {//30s
             uploadCodingTrackData()
             //Reset first coding time
-            trackData.firstCodeingTime = now;
+            trackData.firstCodingTime = now;
         }
         trackData.codingLong += 1000;
         trackData.lastCodingTime = now;
     }
 }
 
+//when extension launch or vscode config change
 function updateConfigurations() {
      //CodingTracker Configuration
     var configurations = ext.getConfig('codingTracker'),
         uploadToken = String(configurations.get('uploadToken')),
-        uploadURL = String(configurations.get('serverURL'));
+        uploadURL = String(configurations.get('serverURL')),
+        computerId = String(configurations.get('computerId'));
     uploadURL = (uploadURL.endsWith('/') ? uploadURL : (uploadURL + '/')) + 'ajax/upload';
     uploader.set(uploadURL, uploadToken);
+    uploadObjectGenerator.setComputerId(computerId || `unknown-${require('os').platform()}`);
 }
 
 
@@ -105,8 +108,8 @@ function activate(context) {
     EventHandler.onActiveFileChange( (vscode.window.activeTextEditor || {}).document);
 
     //Listening vscode event to record coding activity    
-    subscriptions.push(vscode.workspace.onDidChangeTextDocument((e) => EventHandler.onFileCoding( (e || {}).document)  ));
-    subscriptions.push(vscode.window.onDidChangeActiveTextEditor((e) => EventHandler.onActiveFileChange((e || {}).document )  ));
+    subscriptions.push(vscode.workspace.onDidChangeTextDocument(e => EventHandler.onFileCoding( (e || {}).document)  ));
+    subscriptions.push(vscode.window.onDidChangeActiveTextEditor(e => EventHandler.onActiveFileChange((e || {}).document )  ));
 }
 function deactivate() { 
     EventHandler.onActiveFileChange(null);

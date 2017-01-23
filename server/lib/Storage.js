@@ -24,13 +24,6 @@ module.exports = {
 		}
 	}
 };
-function formatDate(date) {
-  let pad = (num) => { return (num < 10 ? '0' : '') + num }
-	return date.getFullYear().toString().substring(2) + 
-	       pad(date.getMonth() + 1) + 
-				 pad(date.getDate());
-}
-
 function getStorableData(data) {
 	var ret = [
 		(constTypeMap[data.type] || 0),
@@ -38,11 +31,18 @@ function getStorableData(data) {
 		data.long,
 		data.lang,
 		data.file,
-		data.proj
+		data.proj,
+		data.pcid
 	];
 	for (var i = 3; i < ret.length; i++) ret[i] = encodeURIComponent(ret[i]);
 	return ret.join(' ') + '\n';
 }
 function getStorageFilePath(paramTime) {
-	return Path.join(storagePath, formatDate(new Date()).concat('.txt'));
+	return Path.join(storagePath, getStorageFileName(new Date(Number(paramTime) )));
+}
+function getStorageFileName(date) {
+	var part = [date.getFullYear() % 100, date.getMonth() + 1, date.getDate()];
+	if (part[1] >= 10) part[1] = 'ABC'.charAt(part[1] - 10);
+	if (part[2] < 10) part[2] = `0${part[2]}`;
+	return part.join('') + '.db';
 }
