@@ -2,5 +2,9 @@
 flowchart/**
 types/**
 test/**
+**/node_modules/**
+server/database/**
+cSpell.json
 jsconfig.json
-TODO
+TODO.md
+

@@ -11,3 +11,6 @@ node_modules
 
 # ignore other files
 yarn.lock
+
+# spell checker dictionary file
+cSpell.json

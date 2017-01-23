@@ -3,6 +3,8 @@ node_modules
 
 # ignore test tracking data files
 /server/database
+# ignore server node_modules
+/server/node_modules
 
 # no flowchart generate command
 flowchart
