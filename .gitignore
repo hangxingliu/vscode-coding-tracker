@@ -1,11 +1,13 @@
 # ignore node modules
 node_modules
-yarn.lock
 
 # ignore test tracking data files
 /server/database
 
-# no flowchart generate command
+# ignore flowchart generate command
 /flowchart/generateImage.cmd
 /flowchart/helper.html
 /flowchart/helper.js
+
+# ignore other files
+yarn.lock
