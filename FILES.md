@@ -30,8 +30,12 @@ the data uploaded by extension
 - `server/lib/TokenMiddleware.js` a token middleware to check upload token
 - `server/lib/Version.js` version description and check module
 - `server/lib/Welcome.js` module to echo welcome and version information to express server
+- `server/lib/UpgradeDatabaseFiles.js` module to upgrade old version database files to current version
 
 - `server/database/*.*` Data of your vscode using track
+
+- `server/utils/cleanDatabaseFiles` a Node.js script to clean up a folder files
+- `server/utils/upgradeDatabaseFiles` a Node.js script to upgrade old database files in a folder to current version
 
 ## Other files
 

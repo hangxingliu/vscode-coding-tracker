@@ -24,8 +24,6 @@ module.exports = {
 		}
 	}
 };
-
-
 function getStorableData(data) {
 	var ret = [
 		(constTypeMap[data.type] || 0),
@@ -33,11 +31,18 @@ function getStorableData(data) {
 		data.long,
 		data.lang,
 		data.file,
-		data.proj
+		data.proj,
+		data.pcid
 	];
 	for (var i = 3; i < ret.length; i++) ret[i] = encodeURIComponent(ret[i]);
 	return ret.join(' ') + '\n';
 }
 function getStorageFilePath(paramTime) {
-	return Path.join(storagePath, paramTime.slice(0, 5).concat('.db'));
+	return Path.join(storagePath, getStorageFileName(new Date(Number(paramTime) )));
+}
+function getStorageFileName(date) {
+	var part = [date.getFullYear() % 100, date.getMonth() + 1, date.getDate()];
+	if (part[1] >= 10) part[1] = 'ABC'.charAt(part[1] - 10);
+	if (part[2] < 10) part[2] = `0${part[2]}`;
+	return part.join('') + '.db';
 }

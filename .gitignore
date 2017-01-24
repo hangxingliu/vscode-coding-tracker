@@ -4,7 +4,16 @@ node_modules
 # ignore test tracking data files
 /server/database
 
-# no flowchart generate command
+# ignore flowchart generate command
 /flowchart/generateImage.cmd
 /flowchart/helper.html
 /flowchart/helper.js
+
+# ignore other files
+yarn.lock
+
+#ignore json files
+.json
+
+# spell checker dictionary file
+cSpell.json

@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+var fs = require('fs-extra'),
+	path = require('path');
+var output = msg => console.log(msg);
+var folderPath = process.argv[2];
+
+output('  A tool to clean all databases files under special folder');
+(folderPath && fs.existsSync(folderPath) && fs.statSync(folderPath).isDirectory()) ||
+	output('\n  error: please launch this tool by using a param `databaseFolder`(This folder must be exists!)\n' +
+		'    such as: `./utils/cleanDatabaseFiles ./database`\n') + process.exit(1);
+	
+var files = fs.readdirSync(folderPath);
+output(`\n  Are you sure to clean all database files under '${folderPath}' ?\n` +
+	`  There are ${files.length} files under this folder`);
+process.stdout.write('(y/N) > ');
+process.stdin.setEncoding('utf8');
+process.stdin.on('data', confirm => {
+	process.stdin.pause();
+	if (confirm.trim().toLowerCase() != 'y')
+		return output('  Action cancelled!');	
+	files.forEach(file => 
+		fs.unlinkSync(path.join(folderPath, file)));
+	output('  Clean success!');
+});

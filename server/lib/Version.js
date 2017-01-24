@@ -2,9 +2,9 @@ var Fs = require('fs'),
 	Path = require('path');
 
 var versionMap = {
-	upload: '2.0',
-	storage: '2.0',
-	uploadSupport: [2, 0],
+	upload: '3.0',
+	storage: '3.0',
+	uploadSupport: [3, 0],
 	server: JSON.parse(Fs.readFileSync(Path.join(__dirname, '..', 'package.json'), 'utf8')).version,
 
 	check: function(v) {
@@ -24,7 +24,7 @@ var versionMap = {
 }
 var Err = {
 	len: 'invalid version string (not format like 1.0)',
-	low: 'server support upload version is too low to support this upload data',
+	low: 'server support upload version is too low to support this upload data (Please upgrade your server program)',
 	nan: 'invalid version string (not number)',
 }
 

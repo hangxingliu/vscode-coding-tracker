@@ -3,12 +3,12 @@
  *
  * Author: LiuYue
  * Github: https://github.com/hangxingliu
- * Version: 0.1.2
+ * Version: 0.1.3
  * License: GPL-3.0
  */
 
 /**
- * Upload Structure Version: 2.0
+ * Upload Structure Version: 3.0
  * Upload item:
  *
  * version: string      upload version
@@ -16,16 +16,16 @@
  *
  * type: enum<string>   open|look|code coding type(open time, looking time and coding time)
  *    if upload type is not in enum item will be choose default enum: open
- * time: string         coding record heppend date string (YYMDDhhmmss)
+ * time: integer        coding record happened timestamp
  * long: integer        coding record duration time(s)
  * lang: string         coding language
  * file: string         coding file path(relative project path)
  * proj: string         coding project path
- *
+ * pcid: string			coding computer id
  */
 
 /**
- * Storage Structure Version: 2.0
+ * Storage Structure Version: 3.0
  * Storage:
  *
  * Each file first line is storage version
@@ -37,7 +37,7 @@
  * Example Rule:
  *
  * [version]
- * [type] [time] [long] [lang] [file] [proj]
+ * [type] [time] [long] [lang] [file] [proj] [pcid]
  * ...
  * -----
  *     [type]: open=>0, look=>1(reserve), code=>2
@@ -67,6 +67,7 @@ var log = require('./lib/Log'),
 	checker = require('./lib/ParamsChecker'),
 	errorHandler = require('./lib/Handler404and500'),
 	tokenChecker = require('./lib/TokenMiddleware'),
+	upgrader = require('./lib/UpgradeDatabaseFiles'),
 	Program = require('./lib/Launcher');
 
 //Express Server Object
@@ -113,24 +114,19 @@ errorHandler(app);
 //--------------------------------------
 //|            Launch Server           |
 //--------------------------------------
-start(function (next) {
-	//Is output folder exist ?
-	Fs.exists(Program.output, (exist) => exist ? next() : Fs.mkdirs(Program.output, next));
 
-}).then(go(function (next) {
-	//Launch express server
-	app.listen(Program.port, next);
+//If ouput folder is not exists then mkdirs
+Fs.existsSync(Program.output) || Fs.mkdirsSync(Program.output);
+//upgrade exists old database files
+upgradeOldDatabaseFiles(Program.output);
+//Launch express web server
+app.listen(Program.port, () => 
+	Log.success('Server has launched and listening port ' + Program.port) );
 
-})).then(go(function (next) {
-	//Log launch success
-	Log.success('Server has launched and listening port ' + Program.port);
-	next();
-
-})).catch(function (e) {
-	Log.error(e.stack);
-	process.exit(1);
-})
 
 function returnError(res, errInfo) { res.json({ error: errInfo || 'Unknown error' }).end() }
-function start(callback) { return go(callback)() }
-function go(callback) {return ()=>new Promise((next) => callback(next))}
+function upgradeOldDatabaseFiles(databaseFolder) {
+	var upgradeResult = upgrader.upgrade(Program.output);
+	upgradeResult.count == 0 || Log.info(`**********\nupgrade old version database file version to ${version.storage}\n` +
+		`  there are ${upgradeResult.count} old version database files be upgrade\n**********`);
+}
