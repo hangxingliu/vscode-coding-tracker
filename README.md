@@ -31,6 +31,11 @@ configurations:
 
 ## Current Version
 
+### 0.1.5 
+
+0. Be sure to upgrade, reason be following 
+1. Fixed two severe bugs. So you will get your right coding and watching time
+
 ### 0.1.4
 
 0. Add computer Id to tracking data(You can specify your Id by set up vscode config
