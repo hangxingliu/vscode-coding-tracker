@@ -20,21 +20,32 @@ var activeDocument,
 
 //Uploading open track data
 function uploadOpenTrackData(now) {
-    var long = now - trackData.openTime,
-        data = uploadObjectGenerator.gen('open', activeDocument, trackData.openTime, long);
-    process.nextTick(() => uploader.upload(data));
+    //If active document is not a ignore document
+    if (!isIgnoreDocument(activeDocument)) {
+        var long = now - trackData.openTime,
+            data = uploadObjectGenerator.gen('open', activeDocument, trackData.openTime, long);
+        process.nextTick(() => uploader.upload(data));
+    }
     //Re-tracking file open time
     trackData.openTime = now;
 }
 //Uploading coding track data and retracking coding track data
 function uploadCodingTrackData() {
-    var data = uploadObjectGenerator.gen('code', activeDocument, trackData.firstCodingTime,
-        trackData.codingLong);
-    process.nextTick(() => uploader.upload(data));
+    //If active document is not a ignore document
+    if (!isIgnoreDocument(activeDocument)) {
+        var data = uploadObjectGenerator.gen('code', activeDocument, trackData.firstCodingTime,
+            trackData.codingLong);
+        process.nextTick(() => uploader.upload(data));
+    }
     //Re-tracking coding track data
     trackData.codingLong =
         trackData.lastCodingTime =
         trackData.firstCodingTime = 0;    
+}
+
+//Check a TextDocument, Is it a ignore document(null/'inmemory')
+function isIgnoreDocument(doc) {
+    return !doc || doc.uri.scheme == 'inmemory';
 }
 
 //Handler VSCode Event
