@@ -4,7 +4,7 @@
   "description": "Visual Studio Code Coding Tracker Server Script",
   "main": "app.js",
   "scripts": {
-    "test": "node app.js",
+    "test": "mocha test/src/*.js",
     "start": "node app.js",
     "preinstall": "npm i express commander colors path fs-extra morgan body-parser"
   },
