@@ -1,11 +1,6 @@
 # ignore node modules
 node_modules
 
-# ignore test tracking data files
-/server/database
-# ignore server node_modules
-/server/node_modules
-
 # ignore flowchart generate command
 flowchart
 
@@ -15,5 +10,11 @@ flowchart
 # ignore .json folder
 .json
 
-# ignore typing files
-types
+# ignore vscode ts file
+vscode.d.ts
+
+# ignore TODO file
+TODO.md
+
+#ignore js config file
+jsconfig.json

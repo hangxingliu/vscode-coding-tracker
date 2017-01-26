@@ -44,7 +44,7 @@
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
-        "install-tsd": "npm install @types/colors @types/commander @types/express @types/body-parser @types/request @types/node @types/fs-extra"
+        "install-tsd": "npm install @types/request"
     },
     "devDependencies": {
         "vscode": "^0.11.0"
@@ -53,9 +53,7 @@
         "vscode"
     ],
     "dependencies": {
-        "colors": "*",
         "fs-extra": "*",
-        "request": "*",
-        "node": "*"
+        "vscode-coding-tracker-server": "^0.1.3"
     }
 }

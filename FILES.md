@@ -17,29 +17,7 @@ vscode extension commands and configurations, declaring the dependent module of 
 
 - `images/icon.png` Extension icon from [emojione](http://emojione.com/)
 
-## Server side files
-
-- `server/app.js` A simple server program script be used to receving 
-the data uploaded by extension
-
-- `server/lib/Handler404and500.js` add page not found and server error handler to express server
-- `server/lib/Launcher.js` a module to get server script launch arguments and echo help information by **commander** library
-- `server/lib/Log.js` log module
-- `server/lib/ParamsChecker.js` check upload data complete
-- `server/lib/Storage.js` module to storage tracking data
-- `server/lib/TokenMiddleware.js` a token middleware to check upload token
-- `server/lib/Version.js` version description and check module
-- `server/lib/Welcome.js` module to echo welcome and version information to express server
-- `server/lib/UpgradeDatabaseFiles.js` module to upgrade old version database files to current version
-
-- `server/database/*.*` Data of your vscode using track
-
-- `server/utils/cleanDatabaseFiles` a Node.js script to clean up a folder files
-- `server/utils/upgradeDatabaseFiles` a Node.js script to upgrade old database files in a folder to current version
-
 ## Other files
-
-- `types/*.*` Some files around typescript intellisense files
 
 - `flowchart/flow.dot` A flow chart diagrammatized the main process of 
 this extension dot language source
