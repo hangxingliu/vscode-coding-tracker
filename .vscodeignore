@@ -1,4 +1,5 @@
 .vscode/**
+.json/**
 flowchart/**
 types/**
 test/**
@@ -7,4 +8,3 @@ server/database/**
 cSpell.json
 jsconfig.json
 TODO.md
-

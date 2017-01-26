@@ -6,5 +6,14 @@ node_modules
 # ignore server node_modules
 /server/node_modules
 
-# no flowchart generate command
+# ignore flowchart generate command
 flowchart
+
+# ignore .vscode config
+.vscode
+
+# ignore .json folder
+.json
+
+# ignore typing files
+types
