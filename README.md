@@ -28,6 +28,12 @@ configurations:
 - `codingTracker.uploadToken` (set up such as "123456")
 - `codingTracker.computerId` (set up this computer name then you can easy to know which computer
  you coding more time)
+- `codingTracker.localMode` (start a local server)
+
+actions:
+- `codingTracker.restartLocalServer` (localMode: restart local server)
+- `codingTracker.stopLocalServer` (localMode: stop local server)
+- `codingTracker.showReport` (localMode: show local analyze report)
 
 ## Current Version
 
