@@ -7,27 +7,43 @@ var vscode      = require('vscode'),
     UploadObjectGenerator   = require('./lib/UploadObjectGenerator');
 //  log.setDebug(false);
 
+//How many ms in 1s
+const SECOND_IN_MS = 1000;
+
+//shortest time to record coding. 5000 means: All coding record divide by 5000 
+const CODING_SHORTEST_UNIT_MS = 5 * SECOND_IN_MS,
+
+//at least time to upload a watching(open) record    
+    AT_LEAST_WATCHING_TIME = 5 * SECOND_IN_MS,   
+
+//means if you are not intently watching time is more than this number,
+//the watching track will not be continuously but a new record
+    MAX_ALLOW_NOT_INTENTLY_MS = 60 * SECOND_IN_MS,
+
+//if you have time below not coding(pressing your keyboard), the coding track record will be upload and re-track    
+    MAX_CODING_WAIT_TIME = 30 * SECOND_IN_MS;
 
 var activeDocument,
     uploadObjectGenerator,
     //Tracking data, record document open time, first coding time and last coding time and coding time long
     trackData = {
         openTime: 0,
+        lastIntentlyTime: 0,
         firstCodingTime: 0,
         codingLong: 0,
         lastCodingTime: 0
-    };
+    },
+    resetTrackOpenAndIntentlyTime = (now) => { trackData.openTime = trackData.lastIntentlyTime = now};
 
 //Uploading open track data
 function uploadOpenTrackData(now) {
     //If active document is not a ignore document
     if (!isIgnoreDocument(activeDocument)) {
-        var long = now - trackData.openTime,
+        var long = Math.min(now, trackData.lastIntentlyTime + MAX_ALLOW_NOT_INTENTLY_MS) - trackData.openTime,
             data = uploadObjectGenerator.gen('open', activeDocument, trackData.openTime, long);
         process.nextTick(() => uploader.upload(data));
     }
-    //Re-tracking file open time
-    trackData.openTime = now;
+    resetTrackOpenAndIntentlyTime(now);
 }
 //Uploading coding track data and retracking coding track data
 function uploadCodingTrackData() {
@@ -50,12 +66,22 @@ function isIgnoreDocument(doc) {
 
 //Handler VSCode Event
 var EventHandler = {
+    onIntentlyWatchingCodes: (textEditor) => {
+        if (!textEditor || !textEditor.document)
+            return;//Empty document
+        var now = Date.now();
+        //Long time have not intently watching document
+        if (now > trackData.lastIntentlyTime + MAX_ALLOW_NOT_INTENTLY_MS) {
+            uploadOpenTrackData(now);
+        }
+        resetTrackOpenAndIntentlyTime(now);
+    },
     onActiveFileChange: (doc) => {
         var now = Date.now();
         // If there is a TextEditor opened before changed, should upload the track data
         if (activeDocument) {
             //At least open 5 seconds
-            if (trackData.openTime < now - 5000) {
+            if (trackData.openTime < now - AT_LEAST_WATCHING_TIME) {
                 uploadOpenTrackData(now);
             }
             //At least coding 1 second
@@ -65,29 +91,29 @@ var EventHandler = {
         }
         activeDocument = ext.cloneTextDocumentObject(doc);
         //Retracking file open time again (Prevent has not retracked open time when upload open tracking data has been called)
-        trackData.openTime = now;
+        resetTrackOpenAndIntentlyTime(now);
         trackData.codingLong = trackData.lastCodingTime = trackData.firstCodingTime = 0;  
     },
     onFileCoding: (doc) => {
         //ignore event emit from vscode `git-index`
         //  `vscode.workspace.onDidChangeTextDocument`
         //because it is not a coding action
-        if (!doc || doc.uri.scheme == 'git-index') 
+        if (!doc || doc.uri.scheme == 'git-index')
             return;
         var now = Date.now();
         //If time is too short to calling this function then just ignore it 
-        if (now - 1000 < trackData.lastCodingTime)
+        if (now - CODING_SHORTEST_UNIT_MS < trackData.lastCodingTime)
             return;
         //If is first time coding in this file, record time
         if (!trackData.firstCodingTime)
             trackData.firstCodingTime = now;
         //If too long time to recoding, so upload old coding track and retracking
-        else if (trackData.lastCodingTime < now - 30000) {//30s
+        else if (trackData.lastCodingTime < now - MAX_CODING_WAIT_TIME) {//30s
             uploadCodingTrackData()
             //Reset first coding time
             trackData.firstCodingTime = now;
         }
-        trackData.codingLong += 1000;
+        trackData.codingLong += CODING_SHORTEST_UNIT_MS;
         trackData.lastCodingTime = now;
     }
 }
@@ -126,6 +152,9 @@ function activate(context) {
     //Listening vscode event to record coding activity    
     subscriptions.push(vscode.workspace.onDidChangeTextDocument(e => EventHandler.onFileCoding( (e || {}).document)  ));
     subscriptions.push(vscode.window.onDidChangeActiveTextEditor(e => EventHandler.onActiveFileChange((e || {}).document )  ));
+    //the below event happen means you change the cursor in the document.
+    //So It means you are watching so intently in some ways
+    subscriptions.push(vscode.window.onDidChangeTextEditorSelection(e => EventHandler.onIntentlyWatchingCodes((e || {}).textEditor)  ));
 }
 function deactivate() { 
     EventHandler.onActiveFileChange(null);
