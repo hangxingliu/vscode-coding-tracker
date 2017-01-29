@@ -6,3 +6,6 @@ yarn.lock
 
 # spell checker dictionary file
 cSpell.json
+
+# ignore database folder
+database
