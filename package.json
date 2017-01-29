@@ -44,7 +44,8 @@
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
-        "install-tsd": "npm install @types/request"
+        "install-tsd": "npm install @types/request",
+        "start": "node ./node_modules/.bin/coding-tracker-server"
     },
     "devDependencies": {
         "vscode": "^0.11.0"
