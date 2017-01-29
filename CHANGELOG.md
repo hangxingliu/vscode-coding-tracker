@@ -1,5 +1,14 @@
 ## CHANGELOG
 
+### 0.2.0
+
+0. Be sure to upgrade again, because accuracy of tracker has be improve
+1. Separated the server side codes to other repository(but add this server side module to npm package dependencies.
+So you can find server side codes under node_modules)
+2. Ignored tracking invalid document times
+3. Added listening onDidChangeTextEditorSelection event to improve accuracy
+4. Tidied extension.js codes
+
 ### 0.1.5 
 
 0. Be sure to upgrade, reason be following 

@@ -5,51 +5,57 @@ coding file type, expenditure of file in a project
 
 ## How To Use
 
-### Installing extension to your VSCode
+### Step1. Installing extension to your VSCode
 
-`ext install vscode-coding-tracker`   
-or search `vscode-coding-tracker` in the extensions panel and click Install button.
+Typing `F1`(in default) in your VSCode to show commands input box and
+input command `ext install vscode-coding-tracker` then enter   
+Or. Search `vscode-coding-tracker` in the extensions panel (left side of VSCode in default)
+and click Install button.
 
-### Launching your tracking server(Local or Remote)
+### Step2. Install and Launching tracker server in local computer or remote server
 
-1. Server script is under the folder `server`    
-(You can find it on your local extension folder **`%USERPROFILE%/.vscode/hangxingliu.vscode-coding-tracker-0.1.4`**)   
-or (**[My Github repository server folder](https://github.com/hangxingliu/vscode-coding-tracker/tree/master/server)**)
-2. Install server script by `npm i` under the folder `server`
-3. Launch the server script by using commander `node app.js -t ${YOUR_TOKEN}`   
-(**replace the `${YOUR_TOKEN}` to a specified string**) under the foler `server`   
-and you can also get the server script help by using `node app.js -h`
+#### Local computer
 
-### Configurating the upload token and your server address in your vscode
+0. Open a terminal/command line
+1. Change path to `%HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.2.0`
+	- In Windows OS, enter command: `cd %HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.2.0`
+	- In Linux/Mac OS, enter command: `cd $HOME/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.2.0`
+2. Launch tracker server by using command: `npm start -- -t ${REPLACE_TO_YOUR_TOKEN}`
+	- Such as `npm start -- -t test_token`, means your upload token is `test_token`
+	- And you can get more configurations and descriptions by using command `npm start -- --help`
+	- Be care! It is necessary to add `--` following to `npm start` to passing following arguments to tracker server
+3. And your tracking data is under `./database` in default.
+
+#### Remote server
+
+0. Login into your remote server
+1. Be sure to install `node` and `npm` environments
+2. Typing command `npm i vscode-coding-tracker-server` (Global install: append ` -g` to the command)
+3. Launch tracker server by using command: `npm start -- -t ${REPLACE_TO_YOUR_TOKEN}`
+4. And your tracking data is under `./database` in default.
+
+### Step 3. Configuring the upload token and your server address in your VSCode
 
 configurations:
 
 - `codingTracker.serverURL` (set up such as "http://localhost:10345")
+	- If you use local tracker server and use default config, you can ignore this config.
+	- Because default value of this config is `http://loclahost:10345` 
 - `codingTracker.uploadToken` (set up such as "123456")
-- `codingTracker.computerId` (set up this computer name then you can easy to know which computer
- you coding more time)
-- `codingTracker.localMode` (start a local server)
-
-actions:
-- `codingTracker.restartLocalServer` (localMode: restart local server)
-- `codingTracker.stopLocalServer` (localMode: stop local server)
-- `codingTracker.showReport` (localMode: show local analyze report)
+	- Setting up this value same as the token you launch your server
+- `codingTracker.computerId` (set up this computer name then you can easy to know which computer you coding more time)
+	- (Optional Config)
 
 ## Current Version
 
-### 0.1.5 
+### 0.2.0
 
-0. Be sure to upgrade, reason be following 
-1. Fixed two severe bugs. So you will get your right coding and watching time
-
-### 0.1.4
-
-0. Add computer Id to tracking data(You can specify your Id by set up vscode config
- `codingTracker.computerId` )
-1. Fixed some spelling mistake in the code and change some comment from Chinese to English
-2. Change tracking data time format from datetime format string to timestamp
-3. Please upgrade your server program to at least 1.3.0 to support receive tracking data 
- and storage data in version 3.0  
+0. Be sure to upgrade again, because accuracy of tracker has be improve
+1. Separated the server side codes to other repository(but add this server side module to npm package dependencies.
+So you can find server side codes under node_modules)
+2. Ignored tracking invalid document times
+3. Added listening onDidChangeTextEditorSelection event to improve accuracy
+4. Tidied extension.js codes
 
 more version information: [CHANGELOG.md](CHANGELOG.md)
 
