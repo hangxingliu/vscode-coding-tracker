@@ -73,8 +73,11 @@ var EventHandler = {
         //Long time have not intently watching document
         if (now > trackData.lastIntentlyTime + MAX_ALLOW_NOT_INTENTLY_MS) {
             uploadOpenTrackData(now);
+            //uploadOpenTrackDate has same expression as below:
+            //resetTrackOpenAndIntentlyTime(now);
+        } else {
+            trackData.lastIntentlyTime = now;
         }
-        resetTrackOpenAndIntentlyTime(now);
     },
     onActiveFileChange: (doc) => {
         var now = Date.now();
