@@ -34,8 +34,28 @@
                     "type": "string",
                     "default": "",
                     "description": "Your computer id(you can recognize different computer in analyze result)(default value: 'unknown-${os.platform()}')"
+                },
+                "codingTracker.localServerMode": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use local tracking server.(Turn it false if you want to save recording data to your server)"
                 }
             }
+        },
+        "commands": {
+            "commands": [{
+                "command": "codingTracker.showReport",
+                "title": "Show your coding activities report",
+                "category": "CodingTracker"
+            },{
+                "command": "codingTracker.restartLocalServer",
+                "title": "Restart/Start local tracking server",
+                "category": "CodingTracker"
+            },{
+                "command": "codingTracker.stopLocalServer",
+                "title": "Stop local tracking server",
+                "category": "CodingTracker"
+            }]
         }
     },
     "repository": {
