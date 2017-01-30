@@ -9,5 +9,6 @@
 		"**/.hg": true,
 		"**/.DS_Store": true,
 		"**/node_modules": true
-	}
+	},
+	"eslint.enable": true
 }
