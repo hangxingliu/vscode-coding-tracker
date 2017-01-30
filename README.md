@@ -48,6 +48,10 @@ configurations:
 
 ## Current Version
 
+### 0.2.1
+
+0. Fixed `npm start` occurs error in Windows.
+
 ### 0.2.0
 
 0. Be sure to upgrade again, because accuracy of tracker has be improve
