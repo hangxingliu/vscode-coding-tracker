@@ -91,7 +91,15 @@ Or, just open browser and enter `http://${YOUR_SERVER_HOST_NAME}:${PORT}/report/
 
 ## Current Version
 
+<<<<<<< HEAD
+### 0.2.1
+
+0. Fixed `npm start` occurs error in Windows.
+
+### 0.2.0
+=======
 ### 0.3.0
+>>>>>>> develop
 
 0. **Added local server mode. So you could use this extension easily.**
 1. Added i18n support(supported language: en, zh-cn, zh-tw)

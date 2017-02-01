@@ -1,0 +1,11 @@
+{
+	"cmd.showReport": "查看你的编程记录报告",
+	"cmd.startLocalServer":"启动本地记录服务器",
+	"cmd.stopLocalServer":"关闭本地记录服务器",
+
+	"cfg.uploadToken": "你的记录服务器的上传Token",
+	"cfg.serverURL": "你的记录服务器的URL",
+	"cfg.computerId": "你本机的标示(用于查看报告的时候分辨不同的计算机)(默认值: 'unknown-${os.platform()}')",
+	"cfg.localServerMode": "伴随VSCode启动本地记录服务器(如果你希望保存编程记录到远端服务器, 请设置为false)"
+	
+}

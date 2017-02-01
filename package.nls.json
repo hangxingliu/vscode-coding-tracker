@@ -1,0 +1,11 @@
+{
+	"cmd.showReport": "Show your coding activities report",
+	"cmd.startLocalServer":"Start tracking server in local",
+	"cmd.stopLocalServer":"Stop tracking server started in local",
+
+	"cfg.uploadToken": "Your tracker server upload token",
+	"cfg.serverURL": "Your tracker server URL",
+	"cfg.computerId": "Your computer id(you can recognize different computer in report)(default value: 'unknown-${os.platform()}')",
+	"cfg.localServerMode": "Start tracking in local when VSCode start(turn it false if you want to save recording data to your remote server)"
+	
+}

@@ -2,7 +2,11 @@
     "name": "vscode-coding-tracker",
     "displayName": "Coding Tracker",
     "description": "A coding activities tracker(time, file, type)",
+<<<<<<< HEAD
+    "version": "0.2.2",
+=======
     "version": "0.3.0",
+>>>>>>> develop
     "license": "GPL-3.0",
     "publisher": "hangxingliu",
     "author": "hangxingliu",
