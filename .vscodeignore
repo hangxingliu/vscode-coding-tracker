@@ -8,3 +8,4 @@ jsconfig.json
 TODO.md
 vscode.d.ts
 database
+/npm-debug.log*

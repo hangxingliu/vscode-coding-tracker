@@ -21,3 +21,6 @@ jsconfig.json
 
 # ignore database folder
 database
+
+# ignore log files
+/npm-debug.log*
