@@ -1,5 +1,12 @@
 ## CHANGELOG
 
+### 0.3.0
+
+0. **Added local server mode. So you could use this extension easily.**
+1. Added i18n support(supported language: en, zh-cn, zh-tw)
+2. Modified status bar module to show more information(local server sign, tooltip and changed icon)
+3. Added Output channel module to output local server log
+
 ### 0.2.0
 
 0. Be sure to upgrade again, because accuracy of tracker has be improve

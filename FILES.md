@@ -8,12 +8,16 @@
 - `lib/VSCodeHelper.js` VSCode extension helper module be used to using vscode API easy
 - `lib/Uploader.js` Tracking data upload module
 - `lib/UploadObjectGenerator.js` Pack up the tracking data to a uploadable object
+- `lib/LocalServer.js` launch, kill and manage local server
+- `lib/OutputChannelLog.js` a log module for local server and show in the OutputChannel of VSCode
+- `lib/StatusBarManage.js` a status bar information and tooltip manager module
 
 - `.vscodeignore` VSCode extension ignore list file(VSCode will doesn't copy these file 
 when install this extension)
 
 - `package.json` VSCode extension and NPM information file be used to defining 
 vscode extension commands and configurations, declaring the dependent module of this extension.
+- `package.nls.json` i18n file for package.json
 
 - `images/icon.png` Extension icon from [emojione](http://emojione.com/)
 
