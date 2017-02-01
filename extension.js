@@ -4,8 +4,9 @@ var vscode      = require('vscode'),
     ext                     = require('./lib/VSCodeHelper'),
     uploader                = require('./lib/Uploader'),
     log                     = require('./lib/Log'),
+    localServer             = require('./lib/LocalServer'),
     UploadObjectGenerator   = require('./lib/UploadObjectGenerator');
-//  log.setDebug(false);
+ log.setDebug(false);
 
 //How many ms in 1s
 const SECOND_IN_MS = 1000;
@@ -131,6 +132,7 @@ function updateConfigurations() {
     uploadURL = (uploadURL.endsWith('/') ? uploadURL : (uploadURL + '/')) + 'ajax/upload';
     uploader.set(uploadURL, uploadToken);
     uploadObjectGenerator.setComputerId(computerId || `unknown-${require('os').platform()}`);
+    localServer.updateConfig();
 }
 
 
@@ -141,6 +143,9 @@ function activate(context) {
     
     uploadObjectGenerator = new UploadObjectGenerator(vscode.workspace.rootPath);
 
+    //Initialize local server(launch local server if localServer config is true)
+    localServer.init(context);
+    
     //Initialize Uploader Module
     uploader.init(context);
     //Update configurations first time
@@ -161,6 +166,7 @@ function activate(context) {
 }
 function deactivate() { 
     EventHandler.onActiveFileChange(null);
+    localServer.dispose();
 }
 
 

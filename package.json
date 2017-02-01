@@ -73,6 +73,7 @@
     ],
     "dependencies": {
         "fs-extra": "*",
+        "tree-kill": "*",
         "vscode-coding-tracker-server": "^0.3.0"
     }
 }
