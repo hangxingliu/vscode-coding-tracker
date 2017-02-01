@@ -23,36 +23,36 @@
                 "codingTracker.uploadToken": {
                     "type": "string",
                     "default": "",
-                    "description": "Your tracker server upload token"
+                    "description": "%cfg.uploadToken%"
                 },
                 "codingTracker.serverURL": {
                     "type": "string",
-                    "default": "http://127.0.0.1:10345/",
-                    "description": "Your tracker server URL"
+                    "default": "http://127.0.0.1:10345",
+                    "description": "%cfg.serverURL%"
                 },
                 "codingTracker.computerId": {
                     "type": "string",
                     "default": "",
-                    "description": "Your computer id(you can recognize different computer in analyze result)(default value: 'unknown-${os.platform()}')"
+                    "description": "%cfg.computerId%"
                 },
                 "codingTracker.localServerMode": {
                     "type": "boolean",
                     "default": true,
-                    "description": "Use local tracking server.(Turn it false if you want to save recording data to your server)"
+                    "description": "%cfg.localServerMode%"
                 }
             }
         },
         "commands": [{
             "command": "codingTracker.showReport",
-            "title": "Show your coding activities report",
+            "title": "%cmd.showReport%",
             "category": "CodingTracker"
         },{
-            "command": "codingTracker.restartLocalServer",
-            "title": "Restart/Start local tracking server",
+            "command": "codingTracker.startLocalServer",
+            "title": "%cmd.startLocalServer%",
             "category": "CodingTracker"
         },{
             "command": "codingTracker.stopLocalServer",
-            "title": "Stop local tracking server",
+            "title": "%cmd.stopLocalServer%",
             "category": "CodingTracker"
         }]
     },
@@ -73,6 +73,6 @@
     ],
     "dependencies": {
         "fs-extra": "*",
-        "vscode-coding-tracker-server": "^0.1.3"
+        "vscode-coding-tracker-server": "^0.3.0"
     }
 }
