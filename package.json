@@ -74,6 +74,6 @@
         "fs-extra": "*",
         "tree-kill": "*",
         "request": "*",
-        "vscode-coding-tracker-server": "^0.3.0"
+        "vscode-coding-tracker-server": "^0.3.1"
     }
 }
