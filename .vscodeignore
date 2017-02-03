@@ -2,7 +2,6 @@
 .json/**
 flowchart/**
 test/**
-**/node_modules/**
 cSpell.json
 jsconfig.json
 TODO.md

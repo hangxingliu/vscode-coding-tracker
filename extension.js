@@ -24,6 +24,17 @@ const CODING_SHORTEST_UNIT_MS = 5 * SECOND_IN_MS,
 //if you have time below not coding(pressing your keyboard), the coding track record will be upload and re-track    
     MAX_CODING_WAIT_TIME = 30 * SECOND_IN_MS;
 
+//If there a event onFileCoding with scheme in here, just ignore this event
+const INVALID_CODING_DOCUMENT_SCHEMES = [
+	//there are will be a `onDidChangeTextDocument` with document scheme `git-index`
+	//be emitted when you switch document, so ignore it
+	'git-index',
+	//when you just look up output channel content, there will be a `onDidChangeTextDocument` be emitted
+	'output',
+	//This is a edit event emit from you debug console input box
+    'input'
+];
+
 var activeDocument,
     uploadObjectGenerator,
     //Tracking data, record document open time, first coding time and last coding time and coding time long
@@ -81,6 +92,7 @@ var EventHandler = {
         }
     },
     onActiveFileChange: (doc) => {
+        log.d('onActiveFileChange: ', doc);
         var now = Date.now();
         // If there is a TextEditor opened before changed, should upload the track data
         if (activeDocument) {
@@ -99,11 +111,12 @@ var EventHandler = {
         trackData.codingLong = trackData.lastCodingTime = trackData.firstCodingTime = 0;  
     },
     onFileCoding: (doc) => {
-        //ignore event emit from vscode `git-index`
-        //  `vscode.workspace.onDidChangeTextDocument`
-        //because it is not a coding action
-        if (!doc || doc.uri.scheme == 'git-index')
-            return;
+        log.d('onFileCoding: ', doc);
+
+		//Ignore the invalid coding file schemes
+		if (!doc || INVALID_CODING_DOCUMENT_SCHEMES.indexOf(doc.uri.scheme) >= 0 )
+    		return; 
+       
         var now = Date.now();
         //If time is too short to calling this function then just ignore it 
         if (now - CODING_SHORTEST_UNIT_MS < trackData.lastCodingTime)

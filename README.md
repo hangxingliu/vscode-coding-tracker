@@ -42,14 +42,15 @@ In this situation, the database file are located in `$HOME/.coding-tracker/`
 
 0. Set your vscode configuration `codingTracker.localServerMode` to `false`
 1. Open a terminal/command line
-2. Change path to `%HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.3.0`
-	- In Windows OS, enter command: `cd %HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.3.0`
-	- In Linux/Mac OS, enter command: `cd $HOME/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.3.0`
-3. Launch tracker server by using command: `npm start -- -t ${REPLACE_TO_YOUR_TOKEN}`
+2. Change path to `%HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.3.1`
+	- In Windows OS, enter command: `cd %HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.3.1`
+	- In Linux/Mac OS, enter command: `cd $HOME/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.3.1`
+3. Execute `npm i`
+4. Launch tracker server by using command: `npm start -- -t ${REPLACE_TO_YOUR_TOKEN}`
 	- Such as `npm start -- -t test_token`, means your upload token is `test_token`
 	- And you can get more configurations and descriptions by using command `npm start -- --help`
 	- Be care! It is necessary to add `--` following to `npm start` to passing following arguments to tracker server
-4. And your tracking data is under `./database` in default.
+5. And your tracking data is under `./database` in default.
 
 #### Remote server
 
@@ -90,6 +91,14 @@ Or, just open browser and enter `http://${YOUR_SERVER_HOST_NAME}:${PORT}/report/
 
 
 ## Current Version
+
+### 0.3.1
+
+0. **fixed the local server severe bug.**
+**(because vscode install extension would not resolve dependencies and I forgot a dependency)**
+1. fixed the wrong coding time record because some feature since VSCode 1.9.0 
+2. fixed could not upload tracking data in non-project context since VSCode 1.9.0
+3. remove some redundant git merge files 
 
 ### 0.3.0
 
