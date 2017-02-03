@@ -1,10 +1,11 @@
-.vscode/**
-.json/**
-flowchart/**
-test/**
+/.vscode/**
+/.json/**
+/flowchart/**
+/test/**
 cSpell.json
 jsconfig.json
 TODO.md
 vscode.d.ts
 database
 /npm-debug.log*
+.eslintrc.json

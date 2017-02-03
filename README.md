@@ -92,6 +92,10 @@ Or, just open browser and enter `http://${YOUR_SERVER_HOST_NAME}:${PORT}/report/
 
 ## Current Version
 
+### 0.3.2
+
+0. more precise in VSCode 1.9.0 (I am crashing because too many things are changed since VSCode 1.9.0)
+
 ### 0.3.1
 
 0. **fixed the local server severe bug.**

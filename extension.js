@@ -28,7 +28,10 @@ const CODING_SHORTEST_UNIT_MS = 5 * SECOND_IN_MS,
 const INVALID_CODING_DOCUMENT_SCHEMES = [
 	//there are will be a `onDidChangeTextDocument` with document scheme `git-index`
 	//be emitted when you switch document, so ignore it
-	'git-index',
+    'git-index',
+    //since 1.9.0 vscode changed `git-index` to `git`, OK, they are refactorings around source control
+    //see more: https://code.visualstudio.com/updates/v1_9#_contributable-scm-providers
+    'git',
 	//when you just look up output channel content, there will be a `onDidChangeTextDocument` be emitted
 	'output',
 	//This is a edit event emit from you debug console input box
