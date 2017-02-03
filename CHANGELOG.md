@@ -1,5 +1,13 @@
 ## CHANGELOG
 
+### 0.3.1
+
+0. **fixed the local server severe bug.**
+**(because vscode install extension would not resolve dependencies and I forgot a dependency)**
+1. fixed the wrong coding time record because some feature since VSCode 1.9.0 
+2. fixed could not upload tracking data in non-project context since VSCode 1.9.0
+3. remove some redundant git merge files 
+
 ### 0.3.0
 
 0. **Added local server mode. So you could use this extension easily.**
