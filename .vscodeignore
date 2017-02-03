@@ -1,11 +1,12 @@
-/.vscode/**
-/.json/**
-/flowchart/**
-/test/**
+# ".vscode" would not match xx/xx/.vscode 
+.vscode/**
+.json/**
+flowchart/**
+test/**
 cSpell.json
 jsconfig.json
 TODO.md
 vscode.d.ts
 database
-/npm-debug.log*
+npm-debug.log*
 .eslintrc.json
