@@ -2,7 +2,7 @@
     "name": "vscode-coding-tracker",
     "displayName": "Coding Tracker",
     "description": "A coding activities tracker(time, file, type)",
-    "version": "0.3.2",
+    "version": "0.4.0",
     "license": "GPL-3.0",
     "publisher": "hangxingliu",
     "author": "hangxingliu",
@@ -74,6 +74,6 @@
         "fs-extra": "*",
         "tree-kill": "*",
         "request": "*",
-        "vscode-coding-tracker-server": "^0.3.1"
+        "vscode-coding-tracker-server": "^0.4.0"
     }
 }

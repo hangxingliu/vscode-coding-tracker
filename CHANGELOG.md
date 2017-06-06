@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### 0.4.0
+
+developing...
+
 ### 0.3.2
 
 0. more precise in VSCode 1.9.0 (I am crashing because too many things are changed since VSCode 1.9.0)

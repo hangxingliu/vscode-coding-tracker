@@ -118,7 +118,7 @@ var EventHandler = {
 
 		//Ignore the invalid coding file schemes
 		if (!doc || INVALID_CODING_DOCUMENT_SCHEMES.indexOf(doc.uri.scheme) >= 0 )
-    		return; 
+            return; 
        
         var now = Date.now();
         //If time is too short to calling this function then just ignore it 
