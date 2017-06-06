@@ -94,7 +94,7 @@ Or, just open browser and enter `http://${YOUR_SERVER_HOST_NAME}:${PORT}/report/
 
 ### 0.4.0
 
-developing...
+0. fixed the bug "could not upload error" caused by switching VSCode windows
 
 more version information: [CHANGELOG.md](CHANGELOG.md)
 
