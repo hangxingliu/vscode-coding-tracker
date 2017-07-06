@@ -1,0 +1,41 @@
+// cSpell Settings
+{
+    // Version of the setting file.  Always 0.1
+    "version": "0.1",
+    // language - current active spelling language
+    "language": "en",
+    // words - list of words to be always considered correct
+    "words": [
+        "Retracking",
+        "recoding",
+        "retracked",
+        "uploader",
+        "timestamp",
+        "gitignore",
+        "inmemory",
+        "PROJ",
+        "YYYYMMDD",
+        "YYYYMMDDHH",
+        "jsconfig",
+        "charset",
+        "typeof",
+        "emojione",
+        "vscodeignore"
+    ],
+    // flagWords - list of words to be always considered incorrect
+    // This is useful for offensive words and common spelling errors.
+    // For example "hte" should be "the"
+    "flagWords": [
+        "hte"
+    ],
+    // Specify paths/files to ignore. (Supports Globs)
+    "ignorePaths": [
+        "**/node_modules/**",
+        "**/vscode-extension/**",
+        "**/.git/**",
+        ".vscode",
+        "typings",
+        "vscode.d.ts",
+        "cSpell.json"
+    ]
+}
