@@ -12,9 +12,9 @@ And all part of tracker are open source and hosted on Github
 
 1. Install this extension(You must know how to do it, click install button)
 2. Reload VSCode and continue coding in VSCode
-3. When you want to know how many times you coding/watching in VSCode, just open command panel in VSCode
-(in default press: `F1`), And search and click command **"CodingTracker: Show your coding activities report"**
-4. And then you could see the report web page like above screenshots
+3. When you want to know how many times you coding/watching in VSCode, just open command panel in VSCode (in default press: `F1`)
+4. Searching and clicking command **"CodingTracker: Show your coding activities report"**
+5. And then you could see the report web page like above screenshots
 
 ## How To Use (Fully guide)
 
@@ -42,9 +42,9 @@ In this situation, the database file are located in `$HOME/.coding-tracker/`
 
 0. Set your vscode configuration `codingTracker.localServerMode` to `false`
 1. Open a terminal/command line
-2. Change path to `%HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.3.1`
-	- In Windows OS, enter command: `cd %HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.3.1`
-	- In Linux/Mac OS, enter command: `cd $HOME/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.3.1`
+2. Change path to `%HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.4.0`
+	- In Windows OS, enter command: `cd %HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.4.0`
+	- In Linux/Mac OS, enter command: `cd $HOME/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.4.0`
 3. Execute `npm i`
 4. Launch tracker server by using command: `npm start -- -t ${REPLACE_TO_YOUR_TOKEN}`
 	- Such as `npm start -- -t test_token`, means your upload token is `test_token`
@@ -71,8 +71,12 @@ configurations:
 - `codingTracker.uploadToken` (set up such as "123456")
 	- Setting up this value same as the token you launch your server
 - `codingTracker.computerId` (set up this computer name then you can easy to know which computer you coding more time)
-	- (Optional Config)
+	- (Optional config)
 - `codingTracker.localServerMode` (in default is true). Please refer above
+- `codingTracker.moreThinkingTime` (in default is 0 ). More thinking time for tracking
+	- This config is making for people need more thinking time in coding activity.
+	- The bigger value you set the longer time you get in report time
+	- **I don't recommend setting up this value bigger, Because I believe the default think time in extension is nice followed my usage**
 
 ### Step 4. See your report
 
@@ -92,24 +96,11 @@ Or, just open browser and enter `http://${YOUR_SERVER_HOST_NAME}:${PORT}/report/
 
 ## Current Version
 
-### 0.3.2
+### 0.4.0
 
-0. more precise in VSCode 1.9.0 (I am crashing because too many things are changed since VSCode 1.9.0)
-
-### 0.3.1
-
-0. **fixed the local server severe bug.**
-**(because vscode install extension would not resolve dependencies and I forgot a dependency)**
-1. fixed the wrong coding time record because some feature since VSCode 1.9.0 
-2. fixed could not upload tracking data in non-project context since VSCode 1.9.0
-3. remove some redundant git merge files 
-
-### 0.3.0
-
-0. **Added local server mode. So you could use this extension easily.**
-1. Added i18n support(supported language: en, zh-cn, zh-tw)
-2. Modified status bar module to show more information(local server sign, tooltip and changed icon)
-3. Added Output channel module to output local server log
+0. Fixed the bug "could not upload error" caused by switching VSCode windows
+1. New report page (support i18n, detailed report, share ...) (vscode-coding-tracker-server => 0.4.0)
+2. Add configuration "moreThinkingTime". Adjust it to make report more accurate for your coding habits
 
 more version information: [CHANGELOG.md](CHANGELOG.md)
 

@@ -1,4 +1,10 @@
-## CHANGELOG
+# CHANGELOG
+
+### 0.4.0
+
+0. Fixed the bug "could not upload error" caused by switching VSCode windows
+1. New report page (support i18n, detailed report, share ...) (vscode-coding-tracker-server => 0.4.0)
+2. Add configuration "moreThinkingTime". Adjust it to make report more accurate for your coding habits
 
 ### 0.3.2
 

@@ -5,7 +5,8 @@
 
 	"cfg.uploadToken": "Your tracker server upload token",
 	"cfg.serverURL": "Your tracker server URL",
-	"cfg.computerId": "Your computer id(you can recognize different computer in report)(default value: 'unknown-${os.platform()}')",
-	"cfg.localServerMode": "Start tracking in local when VSCode start(turn it false if you want to save recording data to your remote server)"
-	
+	"cfg.computerId": "Your computer id(you can recognize different computer in report)\n(default value: 'unknown-${os.platform()}')",
+	"cfg.localServerMode": "Start tracking in local when VSCode start\n(turn it false if you want to save recording data to your remote server)",
+	"cfg.moreThinkingTime": "If you believe your thinking time in coding activity is long.\n(The bigger number you set the longer time you see in report page)\nUnit: milliseconds. Range: [-1500, +Infinity)"
+
 }

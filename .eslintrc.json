@@ -5,12 +5,14 @@
         "es6": true,
         "node": true
     },
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
         },
         "sourceType": "module"
     },
+    "extends": "eslint:recommended",
     "rules": {
         "no-const-assign": "warn",
         "no-this-before-super": "warn",
@@ -20,6 +22,7 @@
         "valid-typeof": "warn",
         
 
-        "no-unused-vars": "off"
+        "no-unused-vars": "warn",
+        "no-console": "off"
     }
 }

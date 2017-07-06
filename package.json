@@ -2,7 +2,7 @@
     "name": "vscode-coding-tracker",
     "displayName": "Coding Tracker",
     "description": "A coding activities tracker(time, file, type)",
-    "version": "0.3.2",
+    "version": "0.4.0",
     "license": "GPL-3.0",
     "publisher": "hangxingliu",
     "author": "hangxingliu",
@@ -39,6 +39,11 @@
                     "type": "boolean",
                     "default": true,
                     "description": "%cfg.localServerMode%"
+                },
+                "codingTracker.moreThinkingTime": {
+                    "type": "number",
+                    "default": 0,
+                    "description": "%cfg.moreThinkingTime%"
                 }
             }
         },
@@ -61,7 +66,7 @@
         "url": "https://github.com/hangxingliu/vscode-coding-tracker"
     },
     "scripts": {
-        "install-tsd": "npm install @types/request",
+        "install-dts": "npm install @types/node @types/request",
         "start": "./node_modules/.bin/coding-tracker-server"
     },
     "devDependencies": {
@@ -71,9 +76,8 @@
         "vscode"
     ],
     "dependencies": {
-        "fs-extra": "*",
         "tree-kill": "*",
         "request": "*",
-        "vscode-coding-tracker-server": "^0.3.1"
+        "vscode-coding-tracker-server": "^0.4.0"
     }
 }
