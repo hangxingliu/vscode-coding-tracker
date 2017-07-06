@@ -94,7 +94,9 @@ Or, just open browser and enter `http://${YOUR_SERVER_HOST_NAME}:${PORT}/report/
 
 ### 0.4.0
 
-0. fixed the bug "could not upload error" caused by switching VSCode windows
+0. Fixed the bug "could not upload error" caused by switching VSCode windows
+1. New report page (support i18n, detailed report, share ...) (vscode-coding-tracker-server => 0.4.0)
+2. Add configuration "moreThinkingTime". Adjust it to make report more accurate for your coding habits
 
 more version information: [CHANGELOG.md](CHANGELOG.md)
 
