@@ -1,11 +1,12 @@
 {
 	"cmd.showReport": "查看你的編程記錄報告",
-	"cmd.startLocalServer":"啟動本地記錄服務器",
-	"cmd.stopLocalServer":"關閉本地記錄服務器",
+	"cmd.startLocalServer":"啟動本地記錄伺服器",
+	"cmd.stopLocalServer":"關閉本地記錄伺服器",
 
-	"cfg.uploadToken": "你的記錄服務器的上傳Token",
-	"cfg.serverURL": "你的記錄服務器的URL",
-	"cfg.computerId": "你本機的標誌(用於查看報告的時候分辨不同的計算機)(默認值: 'unknown-${os.platform()}')",
-	"cfg.localServerMode": "伴隨VSCode啟動本地記錄服務器(如果你希望保存編程記錄到遠端服務器, 請設置為false)"
+	"cfg.uploadToken": "你的記錄伺服器的上傳Token",
+	"cfg.serverURL": "你的記錄伺服器的URL",
+	"cfg.computerId": "你本機的標誌(用於查看報告的時候分辨不同的計算機)\n(默認值: 'unknown-${os.platform()}')",
+	"cfg.localServerMode": "伴隨VSCode啟動本地記錄伺服器\n(如果你希望保存編程記錄到遠端伺服器, 請設置為false)",
+	"cfg.moreThinkingTime": "如果你認為你在編程時需要更多時間思考.\n(這個值越大, 你在報告頁面上看到的統計時間就越多)\n單位: 毫秒"
 	
 }

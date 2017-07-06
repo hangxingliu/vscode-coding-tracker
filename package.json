@@ -39,6 +39,11 @@
                     "type": "boolean",
                     "default": true,
                     "description": "%cfg.localServerMode%"
+                },
+                "codingTracker.moreThinkingTime": {
+                    "type": "number",
+                    "default": 0,
+                    "description": "%cfg.moreThinkingTime%"
                 }
             }
         },
