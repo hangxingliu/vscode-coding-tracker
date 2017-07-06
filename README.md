@@ -12,9 +12,9 @@ And all part of tracker are open source and hosted on Github
 
 1. Install this extension(You must know how to do it, click install button)
 2. Reload VSCode and continue coding in VSCode
-3. When you want to know how many times you coding/watching in VSCode, just open command panel in VSCode
-(in default press: `F1`), And search and click command **"CodingTracker: Show your coding activities report"**
-4. And then you could see the report web page like above screenshots
+3. When you want to know how many times you coding/watching in VSCode, just open command panel in VSCode (in default press: `F1`)
+4. Searching and clicking command **"CodingTracker: Show your coding activities report"**
+5. And then you could see the report web page like above screenshots
 
 ## How To Use (Fully guide)
 
@@ -71,8 +71,12 @@ configurations:
 - `codingTracker.uploadToken` (set up such as "123456")
 	- Setting up this value same as the token you launch your server
 - `codingTracker.computerId` (set up this computer name then you can easy to know which computer you coding more time)
-	- (Optional Config)
+	- (Optional config)
 - `codingTracker.localServerMode` (in default is true). Please refer above
+- `codingTracker.moreThinkingTime` (in default is 0 ). More thinking time for tracking
+	- This config is making for people need more thinking time in coding activity.
+	- The bigger value you set the longer time you get in report time
+	- **I don't recommend setting up this value bigger, Because I believe the default think time in extension is nice followed my usage**
 
 ### Step 4. See your report
 
