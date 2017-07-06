@@ -1,12 +1,17 @@
-var vscode      = require('vscode'),
-    Path        = require('path'),
-    Request     = require('request'),
+"use strict";
+
+//@ts-check
+/// <reference path="./lib/index.d.ts" />
+
+//@ts-ignore
+let vscode = require('vscode'),
     ext                     = require('./lib/VSCodeHelper'),
     uploader                = require('./lib/Uploader'),
     log                     = require('./lib/Log'),
     localServer             = require('./lib/LocalServer'),
     UploadObjectGenerator   = require('./lib/UploadObjectGenerator');
- log.setDebug(false);
+
+log.setDebug(true);
 
 //How many ms in 1s
 const SECOND_IN_MS = 1000;
@@ -29,7 +34,7 @@ const INVALID_CODING_DOCUMENT_SCHEMES = [
 	//there are will be a `onDidChangeTextDocument` with document scheme `git-index`
 	//be emitted when you switch document, so ignore it
     'git-index',
-    //since 1.9.0 vscode changed `git-index` to `git`, OK, they are refactorings around source control
+    //since 1.9.0 vscode changed `git-index` to `git`, OK, they are refactoring around source control
     //see more: https://code.visualstudio.com/updates/v1_9#_contributable-scm-providers
     'git',
 	//when you just look up output channel content, there will be a `onDidChangeTextDocument` be emitted
@@ -80,11 +85,11 @@ function isIgnoreDocument(doc) {
 }
 
 //Handler VSCode Event
-var EventHandler = {
+let EventHandler = {
     onIntentlyWatchingCodes: (textEditor) => {
         if (!textEditor || !textEditor.document)
             return;//Empty document
-        var now = Date.now();
+        let now = Date.now();
         //Long time have not intently watching document
         if (now > trackData.lastIntentlyTime + MAX_ALLOW_NOT_INTENTLY_MS) {
             uploadOpenTrackData(now);
@@ -120,7 +125,7 @@ var EventHandler = {
 		if (!doc || INVALID_CODING_DOCUMENT_SCHEMES.indexOf(doc.uri.scheme) >= 0 )
             return; 
        
-        var now = Date.now();
+        let now = Date.now();
         //If time is too short to calling this function then just ignore it 
         if (now - CODING_SHORTEST_UNIT_MS < trackData.lastCodingTime)
             return;
@@ -155,7 +160,7 @@ function updateConfigurations() {
 function activate(context) {
 
     //Declare for add disposable inside easy
-    var subscriptions = context.subscriptions;
+    let subscriptions = context.subscriptions;
     
     uploadObjectGenerator = new UploadObjectGenerator(vscode.workspace.rootPath);
 
