@@ -6,6 +6,20 @@ And all part of tracker are open source and hosted on Github
 
 ![screenshots1](https://raw.githubusercontent.com/hangxingliu/vscode-coding-tracker-server/master/screenshots/1.png)
 
+## Current Version
+
+### 0.4.1
+
+0. Update server program to 0.4.1 (Add Russian translations. Fixed fatal bug)
+
+### 0.4.0
+
+0. Fixed the bug "could not upload error" caused by switching VSCode windows
+1. New report page (support i18n, detailed report, share ...) (vscode-coding-tracker-server => 0.4.0)
+2. Add configuration "moreThinkingTime". Adjust it to make report more accurate for your coding habits
+
+more version information: [CHANGELOG.md](CHANGELOG.md)
+
 ## How To Use (Easy And Common Way)
 
 **Applicable to people dont want to read below long text and only work with VSCode in one computer**
@@ -92,17 +106,6 @@ Or, just open browser and enter `http://${YOUR_SERVER_HOST_NAME}:${PORT}/report/
 - `codingTracker.startLocalServer` 
 - `codingTracker.stopLocalServer` 
 - `codingTracker.showReport`
-
-
-## Current Version
-
-### 0.4.0
-
-0. Fixed the bug "could not upload error" caused by switching VSCode windows
-1. New report page (support i18n, detailed report, share ...) (vscode-coding-tracker-server => 0.4.0)
-2. Add configuration "moreThinkingTime". Adjust it to make report more accurate for your coding habits
-
-more version information: [CHANGELOG.md](CHANGELOG.md)
 
 ## File List
 

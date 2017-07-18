@@ -1,5 +1,9 @@
 # CHANGELOG
 
+### 0.4.1
+
+0. Update server program to 0.4.1 (Add Russian translations. Fixed fatal bug)
+
 ### 0.4.0
 
 0. Fixed the bug "could not upload error" caused by switching VSCode windows
