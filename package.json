@@ -78,6 +78,6 @@
     "dependencies": {
         "tree-kill": "*",
         "request": "*",
-        "vscode-coding-tracker-server": "^0.4.0"
+        "vscode-coding-tracker-server": "^0.4.1"
     }
 }
