@@ -48,7 +48,7 @@ So you can find server side codes under node_modules)
 0. Be sure to upgrade, reason be following 
 1. Fixed two severe bugs. So you will get your right coding and watching time
 
-## 0.1.4
+### 0.1.4
 
 0. Add computer Id to tracking data(You can specify your Id by set up vscode config
  `codingTracker.computerId` )
@@ -57,19 +57,19 @@ So you can find server side codes under node_modules)
 3. Please upgrade your server program to at least 1.3.0 to support receive tracking data 
  and storage data in version 3.0  
 
-## 0.1.3
+### 0.1.3
 
 0. Modified the log module, removed export log object to global variable "Log" (because sometimes it lead to a vscode exception)
 
-## 0.1.2
+### 0.1.2
 
 0. Fixed a bug around node module require in Linux must care about character case.
 
-## 0.1.1
+### 0.1.1
 
 0. Change folder and project structure to adapt npm and vscode extension
 
-## 0.1.0
+### 0.1.0
 
 0. Add an icon to extension
 1. **Fixed the severe bug** (could not to use this extension because dependencies list is incompletion)
