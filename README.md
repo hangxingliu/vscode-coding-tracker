@@ -4,13 +4,16 @@ Collect your coding activities. And give you a report group by date, languages, 
 
 And all part of tracker are open source and hosted on Github
 
+Available display language: English, Russian, 简体中文, 繁體中文
+
 ![screenshots1](https://raw.githubusercontent.com/hangxingliu/vscode-coding-tracker-server/master/screenshots/1.png)
 
 ## Current Version
 
 ### 0.4.1
 
-0. Update server program to 0.4.1 (Add Russian translations. Fixed fatal bug)
+0. Add Russian translations. (Include report page) (Thank [Dolgishev Viktor (@vdolgishev)][vdolgishev])
+1. Update server program to 0.4.1 (**Fixed fatal bug**)
 
 ### 0.4.0
 
@@ -24,11 +27,10 @@ more version information: [CHANGELOG.md](CHANGELOG.md)
 
 **Applicable to people dont want to read below long text and only work with VSCode in one computer**
 
-1. Install this extension(You must know how to do it, click install button)
-2. Reload VSCode and continue coding in VSCode
-3. When you want to know how many times you coding/watching in VSCode, just open command panel in VSCode (in default press: `F1`)
-4. Searching and clicking command **"CodingTracker: Show your coding activities report"**
-5. And then you could see the report web page like above screenshots
+1. Install this extension and reload VSCode (You must know how to do it, click install button)
+2. Coding...  Coding...  Coding... 
+3. Do you want to know how many time elapsed in your coding activity ? open command panel(press `F1`) in VSCode
+4. Searching and clicking command **"CodingTracker: Show your coding activities report"**. Then you will get it.
 
 ## How To Use (Fully guide)
 
@@ -119,7 +121,15 @@ redirect to [FILES.md](FILES.md)
 
 This extension icon from [emojione](http://emojione.com/), This project help me a lot of (bkz I dont know how to use PS and dont have art sense).
 
+### Contributors
+
+- [Ted Piotrowski (@ted-piotrowski)][ted-piotrowski]
+- [Dolgishev Viktor (@vdolgishev)][vdolgishev]
+
 ## License
 
 - Extension(part except icon) and server scripts: [GPL-3.0](LICENSE)
 - Extension Icon[CC-BY 4.0](http://emojione.com/licensing/)
+
+[vdolgishev]: https://github.com/vdolgishev
+[ted-piotrowski]: https://github.com/ted-piotrowski

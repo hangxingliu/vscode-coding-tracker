@@ -2,7 +2,8 @@
 
 ### 0.4.1
 
-0. Update server program to 0.4.1 (Add Russian translations. Fixed fatal bug)
+0. Add Russian translations. (Include report page) (Thank [Dolgishev Viktor (@vdolgishev)][vdolgishev])
+1. Update server program to 0.4.1 (**Fixed fatal bug**)
 
 ### 0.4.0
 
