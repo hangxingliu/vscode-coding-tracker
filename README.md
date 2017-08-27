@@ -83,7 +83,7 @@ configurations:
 
 - `codingTracker.serverURL` (set up such as "http://localhost:10345")
 	- If you use local tracker server and use default config, you can ignore this config.
-	- Because default value of this config is `http://loclahost:10345` 
+	- Because default value of this config is `http://localhost:10345` 
 - `codingTracker.uploadToken` (set up such as "123456")
 	- Setting up this value same as the token you launch your server
 - `codingTracker.computerId` (set up this computer name then you can easy to know which computer you coding more time)
