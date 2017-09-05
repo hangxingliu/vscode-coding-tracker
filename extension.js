@@ -8,6 +8,7 @@ let vscode = require('vscode'),
     ext                     = require('./lib/VSCodeHelper'),
     uploader                = require('./lib/Uploader'),
     log                     = require('./lib/Log'),
+    statusBar               = require('./lib/StatusBarManager'),
     localServer             = require('./lib/LocalServer'),
     UploadObjectGenerator   = require('./lib/UploadObjectGenerator');
 
@@ -161,7 +162,8 @@ function updateConfigurations() {
         uploadToken = String(configurations.get('uploadToken')),
         uploadURL = String(configurations.get('serverURL')),
         computerId = String(configurations.get('computerId')),
-        mtt = parseInt(configurations.get('moreThinkingTime'));
+        mtt = parseInt(configurations.get('moreThinkingTime')),
+        enableStatusBar = configurations.get('showStatus');
 
     // fixed wrong more thinking time configuration value
     if (isNaN(mtt)) mtt = 0;
@@ -172,6 +174,7 @@ function updateConfigurations() {
     uploader.set(uploadURL, uploadToken);
     uploadObjectGenerator.setComputerId(computerId || `unknown-${require('os').platform()}`);
     localServer.updateConfig();
+    statusBar.init(enableStatusBar);
 }
 
 function activate(context) {
