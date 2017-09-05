@@ -33,7 +33,7 @@ this extension dot language source
 
 - `jsconfig.json` vscode javascript intellisense configuration file
 
-- `LICENSE` the opensource license file of this project
+- `LICENSE` the open-source license file of this project
 (include extension and server script)
 
 - `CHANGELOG.md` the changelog of this project
