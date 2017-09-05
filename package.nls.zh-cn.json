@@ -7,6 +7,6 @@
 	"cfg.serverURL": "你的记录服务器的URL",
 	"cfg.computerId": "你本机的标示(用于查看报告的时候分辨不同的计算机)\n(默认值: 'unknown-${os.platform()}')",
 	"cfg.localServerMode": "伴随VSCode启动本地记录服务器\n(如果你希望保存编程记录到远端服务器, 请设置为false)",
-	"cfg.moreThinkingTime": "如果你认为你在编程时需要更多时间思考.\n(这个值越大, 你在报告页面上看到的统计时间就越多)\n单位: 毫秒. 取值范围: [-1500, +Infinity)"
-
+	"cfg.moreThinkingTime": "如果你认为你在编程时需要更多时间思考.\n(这个值越大, 你在报告页面上看到的统计时间就越多)\n单位: 毫秒. 取值范围: [-1500, +Infinity)",
+	"cfg.showStatus": "在状态栏显示状态信息"
 }

@@ -2,7 +2,7 @@
     "name": "vscode-coding-tracker",
     "displayName": "Coding Tracker",
     "description": "A coding activities tracker(time, file, type)",
-    "version": "0.4.1",
+    "version": "0.5.0",
     "license": "GPL-3.0",
     "publisher": "hangxingliu",
     "author": "hangxingliu",
@@ -44,6 +44,11 @@
                     "type": "number",
                     "default": 0,
                     "description": "%cfg.moreThinkingTime%"
+                },
+                "codingTracker.showStatus": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "%cfg.showStatus%"
                 }
             }
         },
