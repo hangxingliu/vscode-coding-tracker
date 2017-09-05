@@ -10,6 +10,10 @@ Available display language: English, Russian, 简体中文, 繁體中文
 
 ## Current Version
 
+### 0.4.2
+
+0. Add configuration `showStatus` to controlling visibility of status bar information
+
 ### 0.4.1
 
 0. Add Russian translations. (Include report page) (Thank [Dolgishev Viktor (@vdolgishev)][vdolgishev])
