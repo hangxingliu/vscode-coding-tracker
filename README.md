@@ -10,6 +10,12 @@ Available display language: English, Russian, 简体中文, 繁體中文
 
 ## Current Version
 
+### 0.5.0
+
+`Working...`
+
+0. Add Git branch information tracking
+
 ### 0.4.2
 
 0. Add configuration `showStatus` to controlling visibility of status bar information
