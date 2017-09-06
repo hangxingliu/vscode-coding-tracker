@@ -22,8 +22,10 @@
         "inmemory",
         "jsconfig",
         "recoding",
+        "repo",
         "retracked",
         "timestamp",
+        "toplevel",
         "typeof",
         "uploader",
         "vscodeignore"

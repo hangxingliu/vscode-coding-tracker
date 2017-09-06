@@ -127,9 +127,10 @@ redirect to [FILES.md](FILES.md)
 
 [LiuYue](https://github.com/hangxingliu)
 
-## Thanks
+## Third party codes and resource
 
-This extension icon from [emojione](http://emojione.com/), This project help me a lot of (bkz I dont know how to use PS and dont have art sense).
+- This extension icon from [emojione](http://emojione.com/), This project help me a lot of (bkz I dont know how to use PS and dont have art sense).
+- `lib/thirdPartyCodes/gitPaths.js` is modified from <https://github.com/DonJayamanne/gitHistoryVSCode/blob/master/src/helpers/gitPaths.ts>
 
 ### Contributors
 
@@ -138,8 +139,9 @@ This extension icon from [emojione](http://emojione.com/), This project help me 
 
 ## License
 
-- Extension(part except icon) and server scripts: [GPL-3.0](LICENSE)
+- Extension(part except icon and third party codes) and server scripts: [GPL-3.0](LICENSE)
 - Extension Icon[CC-BY 4.0](http://emojione.com/licensing/)
+- Third party codes license information in the front of third party code files
 
 [vdolgishev]: https://github.com/vdolgishev
 [ted-piotrowski]: https://github.com/ted-piotrowski
