@@ -69,8 +69,8 @@ function uploadOpenTrackData(now) {
     if (!isIgnoreDocument(activeDocument)) {
         let longest = trackData.lastIntentlyTime + MAX_ALLOW_NOT_INTENTLY_MS + moreThinkingTime,
             long = Math.min(now, longest) - trackData.openTime,
-            data = uploadObjectGenerator.gen('open', activeDocument, trackData.openTime, long);
-        process.nextTick(() => uploader.upload(data));
+            promise = uploadObjectGenerator.gen('open', activeDocument, trackData.openTime, long);
+        promise.then(obj => uploader.upload(obj));
     }
     resetTrackOpenAndIntentlyTime(now);
 }
@@ -79,9 +79,9 @@ function uploadOpenTrackData(now) {
 function uploadCodingTrackData() {
     //If active document is not a ignore document
     if (!isIgnoreDocument(activeDocument)) {
-        let data = uploadObjectGenerator.gen('code', activeDocument, trackData.firstCodingTime,
+        let promise = uploadObjectGenerator.gen('code', activeDocument, trackData.firstCodingTime,
             trackData.codingLong);
-        process.nextTick(() => uploader.upload(data));
+        promise.then(obj => uploader.upload(obj));
     }
     //Re-tracking coding track data
     trackData.codingLong =
