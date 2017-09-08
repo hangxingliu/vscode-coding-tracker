@@ -3,5 +3,5 @@ type Logger = {
 	e: LoggerFunction;
 	w: LoggerFunction;
 	d: LoggerFunction;
-	setDebug: (isDebug: boolean) => boolean;
+	debugMode: boolean;
 }

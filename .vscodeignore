@@ -8,3 +8,5 @@ vscode.d.ts
 database
 npm-debug.log*
 .eslintrc.json
+DEBUG_SIGN_FILE
+IS_THIRD_PARTY_CODES_UPDATE.sh

@@ -12,8 +12,6 @@ let vscode = require('vscode'),
     localServer             = require('./lib/LocalServer'),
     UploadObjectGenerator   = require('./lib/UploadObjectGenerator');
 
-log.setDebug(false);
-
 /** How many ms in 1s */
 const SECOND = 1000;
 
