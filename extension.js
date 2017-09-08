@@ -139,6 +139,9 @@ let EventHandler = {
         //If time is too short to calling this function then just ignore it 
         if (now - CODING_SHORTEST_UNIT_MS < trackData.lastCodingTime)
             return;
+        // Update document line count
+        activeDocument.lineCount = doc.lineCount;
+        
         //If is first time coding in this file, record time
         if (!trackData.firstCodingTime)
             trackData.firstCodingTime = now;
