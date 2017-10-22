@@ -7,8 +7,7 @@
 		"**/.git": true,
 		"**/.svn": true,
 		"**/.hg": true,
-		"**/.DS_Store": true,
-		"**/node_modules": true
+		"**/.DS_Store": true
 	},
 	"eslint.enable": true
 }
