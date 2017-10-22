@@ -1,3 +1,10 @@
+type VCSCacheMap = {
+	[key: string]: {
+		cache: string;
+		expiredTime: number;
+	};
+}
+
 type LoggerFunction = (...fields) => void;
 type Logger = {
 	e: LoggerFunction;
@@ -6,7 +13,7 @@ type Logger = {
 	debugMode: boolean;
 }
 type UploadObject = {
-	version: '3.0';
+	version: '4.0';
 	token: string;
 	type: string;
 	time: string;
@@ -27,10 +34,14 @@ type UploadObject = {
 	 * Computer ID
 	 */
 	pcid: string;
+
 	/**
 	 * Version Control System Information
 	 */
-	vcs: string;
+	vcs_type: string;
+	vcs_repo: string;
+	vcs_branch: string;
+	
 	/**
 	 * Line counts
 	 */

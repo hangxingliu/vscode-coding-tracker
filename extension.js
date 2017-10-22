@@ -1,16 +1,18 @@
+//@ts-check
+
 /// <reference path="vscode.d.ts" />
 /// <reference path="./lib/index.d.ts" />
 
 "use strict";
 
 //@ts-ignore
-let vscode = require('vscode'),
-    ext                     = require('./lib/VSCodeHelper'),
-    uploader                = require('./lib/Uploader'),
-    log                     = require('./lib/Log'),
-    statusBar               = require('./lib/StatusBarManager'),
-    localServer             = require('./lib/LocalServer'),
-    UploadObjectGenerator   = require('./lib/UploadObjectGenerator');
+let vscode       = require('vscode'),
+    ext          = require('./lib/VSCodeHelper'),
+    uploader     = require('./lib/Uploader'),
+    log          = require('./lib/Log'),
+    statusBar    = require('./lib/StatusBarManager'),
+    localServer  = require('./lib/LocalServer'),
+    uploadObject = require('./lib/UploadObject');
 
 /** How many ms in 1s */
 const SECOND = 1000;
@@ -44,12 +46,12 @@ const INVALID_CODING_DOCUMENT_SCHEMES = [
     'input'
 ];
 
+const EMPTY = { document: null, textEditor: null };
+
 /** more thinking time from user configuration */
 let moreThinkingTime = 0;
 /** current active document*/
 let activeDocument;
-/** upload object generator instance */
-let uploadObjectGenerator;
 /** Tracking data, record document open time, first coding time and last coding time and coding time long */
 let trackData = {
     openTime: 0,
@@ -68,9 +70,9 @@ function uploadOpenTrackData(now) {
     //If active document is not a ignore document
     if (!isIgnoreDocument(activeDocument)) {
         let longest = trackData.lastIntentlyTime + MAX_ALLOW_NOT_INTENTLY_MS + moreThinkingTime,
-            long = Math.min(now, longest) - trackData.openTime,
-            promise = uploadObjectGenerator.gen('open', activeDocument, trackData.openTime, long);
-        promise.then(obj => uploader.upload(obj));
+            long = Math.min(now, longest) - trackData.openTime;
+        
+        uploadObject.generateOpen(activeDocument, trackData.openTime, long).then(uploader.upload);
     }
     resetTrackOpenAndIntentlyTime(now);
 }
@@ -79,9 +81,8 @@ function uploadOpenTrackData(now) {
 function uploadCodingTrackData() {
     //If active document is not a ignore document
     if (!isIgnoreDocument(activeDocument)) {
-        let promise = uploadObjectGenerator.gen('code', activeDocument, trackData.firstCodingTime,
-            trackData.codingLong);
-        promise.then(obj => uploader.upload(obj));
+        uploadObject.generateCode(activeDocument, trackData.firstCodingTime, trackData.codingLong)
+            .then(uploader.upload);
     }
     //Re-tracking coding track data
     trackData.codingLong =
@@ -97,6 +98,8 @@ function isIgnoreDocument(doc) {
 /** Handler VSCode Event */
 let EventHandler = {
     onIntentlyWatchingCodes: (textEditor) => {
+        if (log.debugMode)
+            log.d('watching intently: ' + ext.dumpEditor(textEditor));
         if (!textEditor || !textEditor.document)
             return;//Empty document
         let now = Date.now();
@@ -110,7 +113,8 @@ let EventHandler = {
         }
     },
     onActiveFileChange: (doc) => {
-        log.d('onActiveFileChange: ', doc);
+        if(log.debugMode)
+            log.d('active file change: ' + ext.dumpDocument(doc));
         let now = Date.now();
         // If there is a TextEditor opened before changed, should upload the track data
         if (activeDocument) {
@@ -129,7 +133,8 @@ let EventHandler = {
         trackData.codingLong = trackData.lastCodingTime = trackData.firstCodingTime = 0;  
     },
     onFileCoding: (doc) => {
-        log.d('onFileCoding: ', doc);
+        if(log.debugMode)
+            log.d('coding: ' + ext.dumpDocument(doc));
 
 		//Ignore the invalid coding file schemes
 		if (!doc || INVALID_CODING_DOCUMENT_SCHEMES.indexOf(doc.uri.scheme) >= 0 )
@@ -173,7 +178,8 @@ function updateConfigurations() {
 
     uploadURL = (uploadURL.endsWith('/') ? uploadURL : (uploadURL + '/')) + 'ajax/upload';
     uploader.set(uploadURL, uploadToken);
-    uploadObjectGenerator.setComputerId(computerId || `unknown-${require('os').platform()}`);
+    uploadObject.init(computerId || `unknown-${require('os').platform()}`);
+
     localServer.updateConfig();
     statusBar.init(enableStatusBar);
 }
@@ -183,13 +189,13 @@ function activate(context) {
     //Declare for add disposable inside easy
     let subscriptions = context.subscriptions;
     
-    uploadObjectGenerator = new UploadObjectGenerator(vscode.workspace.rootPath);
+    uploadObject.init();
 
     //Initialize local server(launch local server if localServer config is true)
     localServer.init(context);
     
     //Initialize Uploader Module
-    uploader.init(context);
+    uploader.init();
     //Update configurations first time
     updateConfigurations();
 
@@ -197,14 +203,14 @@ function activate(context) {
     vscode.workspace.onDidChangeConfiguration(updateConfigurations);
 
     //Tracking the file display when vscode open
-    EventHandler.onActiveFileChange( (vscode.window.activeTextEditor || {}).document);
+    EventHandler.onActiveFileChange( (vscode.window.activeTextEditor || EMPTY).document);
 
     //Listening vscode event to record coding activity    
-    subscriptions.push(vscode.workspace.onDidChangeTextDocument(e => EventHandler.onFileCoding( (e || {}).document)  ));
-    subscriptions.push(vscode.window.onDidChangeActiveTextEditor(e => EventHandler.onActiveFileChange((e || {}).document )  ));
+    subscriptions.push(vscode.workspace.onDidChangeTextDocument(e => EventHandler.onFileCoding( (e || EMPTY).document)  ));
+    subscriptions.push(vscode.window.onDidChangeActiveTextEditor(e => EventHandler.onActiveFileChange((e || EMPTY).document )  ));
     //the below event happen means you change the cursor in the document.
     //So It means you are watching so intently in some ways
-    subscriptions.push(vscode.window.onDidChangeTextEditorSelection(e => EventHandler.onIntentlyWatchingCodes((e || {}).textEditor)  ));
+    subscriptions.push(vscode.window.onDidChangeTextEditorSelection(e => EventHandler.onIntentlyWatchingCodes((e || EMPTY).textEditor)  ));
 
     // Maybe I will add "onDidChangeVisibleTextEditors" in extension in next version
     // For detect more detailed editor information
