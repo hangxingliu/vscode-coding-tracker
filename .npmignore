@@ -1,8 +1,5 @@
-# ignore node modules
-node_modules
-
-# ignore flowchart generate command
-flowchart
+# ignore docs 
+docs
 
 # ignore .vscode config
 .vscode

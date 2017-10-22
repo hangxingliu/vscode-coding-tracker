@@ -1,5 +1,12 @@
 # CHANGELOG
 
+### 0.5.0 (Stage: checking bug)
+
+0. Add VCS(Git) repository and branch information tracking
+1. Add document line counts tracking
+2. Upgrade uploading protocol version to 4.0
+3. Optimize codes 
+
 ### 0.4.2
 
 0. Add configuration `showStatus` to controlling visibility of status bar information

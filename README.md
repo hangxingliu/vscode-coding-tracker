@@ -10,11 +10,12 @@ Available display language: English, Russian, 简体中文, 繁體中文
 
 ## Current Version
 
-### 0.5.0
+### 0.5.0 (Stage: checking bug, expected release date: 1th Nov.)
 
-`Working...`
-
-0. Add Git branch information tracking
+0. Add VCS(Git) repository and branch information tracking
+1. Add document line counts tracking
+2. Upgrade uploading protocol version to 4.0
+3. Optimize codes 
 
 ### 0.4.2
 
@@ -33,7 +34,7 @@ Available display language: English, Russian, 简体中文, 繁體中文
 
 more version information: [CHANGELOG.md](CHANGELOG.md)
 
-## How To Use (Easy And Common Way)
+## How To Use (**Easy And Common Way**)
 
 **Applicable to people dont want to read below long text and only work with VSCode in one computer**
 
@@ -42,7 +43,7 @@ more version information: [CHANGELOG.md](CHANGELOG.md)
 3. Do you want to know how many time elapsed in your coding activity ? open command panel(press `F1`) in VSCode
 4. Searching and clicking command **"CodingTracker: Show your coding activities report"**. Then you will get it.
 
-## How To Use (Fully guide)
+## How To Use (Fully guide) **TLDR**
 
 > VSCode Coding Tracker actually has two part: extension and server (C/S)
 >

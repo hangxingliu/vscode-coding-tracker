@@ -1,7 +1,7 @@
 # ".vscode" would not match xx/xx/.vscode 
 .vscode/**
 .json/**
-flowchart/**
+docs/**
 test/**
 TODO.md
 vscode.d.ts
