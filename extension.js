@@ -72,7 +72,8 @@ function uploadOpenTrackData(now) {
         let longest = trackData.lastIntentlyTime + MAX_ALLOW_NOT_INTENTLY_MS + moreThinkingTime,
             long = Math.min(now, longest) - trackData.openTime;
         
-        uploadObject.generateOpen(activeDocument, trackData.openTime, long).then(uploader.upload);
+        uploadObject.generateOpen(activeDocument, trackData.openTime, long)
+            .then(uploader.upload);
     }
     resetTrackOpenAndIntentlyTime(now);
 }
@@ -217,6 +218,11 @@ function activate(context) {
     // But this event will always include debug-input box if you open debug panel one time
     
     // subscriptions.push(vscode.window.onDidChangeVisibleTextEditors(e => console.log('onDidChangeVisibleTextEditors', e)))
+
+    //TODO debug
+    subscriptions.push(vscode.commands.registerCommand('codingTracker.dumpVCSQueue', () => {
+        console.log(require('./lib/vcs/Git')._getVCSInfoQueue);
+    }));
 }
 function deactivate() { 
     EventHandler.onActiveFileChange(null);

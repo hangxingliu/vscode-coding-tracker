@@ -64,6 +64,10 @@
             "command": "codingTracker.stopLocalServer",
             "title": "%cmd.stopLocalServer%",
             "category": "CodingTracker"
+        }, {
+            "command": "codingTracker.dumpVCSQueue",
+            "title": "debug: dump vcs queue",
+            "category": "CodingTracker"    
         }]
     },
     "repository": {
