@@ -1,3 +1,6 @@
+# ignore vscode.d.ts files
+lib/vscode.d.ts/*.d.ts
+
 # ignore database folder
 database
 

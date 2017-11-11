@@ -120,9 +120,9 @@ Or, just open browser and enter `http://${YOUR_SERVER_HOST_NAME}:${PORT}/report/
 - `codingTracker.stopLocalServer` 
 - `codingTracker.showReport`
 
-## File List
+## Contributing
 
-redirect to [FILES.md](FILES.md)
+[CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Author
 

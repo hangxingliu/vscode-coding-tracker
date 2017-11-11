@@ -8,7 +8,7 @@ docs
 .json
 
 # ignore vscode ts file
-vscode.d.ts
+lib/vscode.d.ts
 
 # ignore TODO file
 TODO.md

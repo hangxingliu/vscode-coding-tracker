@@ -7,12 +7,6 @@
     // words - list of words to be always considered correct
     "words": [
         "CHANGELOG",
-        "PROJ",
-        "Retracking",
-        "USERPROFILE",
-        "Workspaces",
-        "YYYYMMDD",
-        "YYYYMMDDHH",
         "charset",
         "datetime",
         "diagrammatized",
@@ -20,16 +14,23 @@
         "gitignore",
         "hangxingliu",
         "inmemory",
+        "intelli",
         "jsconfig",
         "pcid",
+        "PROJ",
         "recoding",
         "repo",
         "retracked",
+        "Retracking",
         "timestamp",
         "toplevel",
         "typeof",
         "uploader",
-        "vscodeignore"
+        "USERPROFILE",
+        "vscodeignore",
+        "Workspaces",
+        "YYYYMMDD",
+        "YYYYMMDDHH"
     ],
     // flagWords - list of words to be always considered incorrect
     // This is useful for offensive words and common spelling errors.

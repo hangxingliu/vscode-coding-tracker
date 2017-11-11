@@ -82,10 +82,12 @@
         "url": "https://github.com/hangxingliu/vscode-coding-tracker"
     },
     "scripts": {
-        "install-dts": "npm install @types/node @types/request",
+        "check-third-party-codes-update": "node ./lib/thirdPartyCodes/CHECK_UPDATE.js",
+        "install-vscode-dts": "node ./lib/vscode.d.ts/FETCH.js",
         "start": "./node_modules/.bin/coding-tracker-server"
     },
     "devDependencies": {
+        "@types/node": "^8.0.51",
         "vscode": "^0.11.0"
     },
     "keywords": [

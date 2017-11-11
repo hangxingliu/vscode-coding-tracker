@@ -1,3 +1,6 @@
+/// <reference path="./vscode.d.ts/vscode.d.ts" />
+/// <reference path="./vscode.d.ts/vscode_namespace.d.ts" />
+
 type VCSCacheMap = {
 	[key: string]: {
 		cache: string;
@@ -60,20 +63,3 @@ type UploadObject = {
 	r2: string;
 }
 
-type VSCodeTextDocument = {
-	uri: VSCodeUri;
-	fileName: string;
-	isUntitled: boolean;
-	languageId: string;
-	version: number;
-	isDirty: boolean;
-	isClosed: boolean;
-}
-type VSCodeUri = {
-	scheme: string;
-	authority: string;
-	path: string;
-	query: string;
-	fragment: string;
-	fsPath: string;
-};
