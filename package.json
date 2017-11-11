@@ -13,7 +13,9 @@
     "categories": [
         "Other"
     ],
-    "activationEvents": ["*"],
+    "activationEvents": [
+        "*"
+    ],
     "main": "./extension",
     "contributes": {
         "configuration": {
@@ -52,23 +54,28 @@
                 }
             }
         },
-        "commands": [{
-            "command": "codingTracker.showReport",
-            "title": "%cmd.showReport%",
-            "category": "CodingTracker"
-        },{
-            "command": "codingTracker.startLocalServer",
-            "title": "%cmd.startLocalServer%",
-            "category": "CodingTracker"
-        },{
-            "command": "codingTracker.stopLocalServer",
-            "title": "%cmd.stopLocalServer%",
-            "category": "CodingTracker"
-        }, {
-            "command": "codingTracker.dumpVCSQueue",
-            "title": "debug: dump vcs queue",
-            "category": "CodingTracker"    
-        }]
+        "commands": [
+            {
+                "command": "codingTracker.showReport",
+                "title": "%cmd.showReport%",
+                "category": "CodingTracker"
+            },
+            {
+                "command": "codingTracker.startLocalServer",
+                "title": "%cmd.startLocalServer%",
+                "category": "CodingTracker"
+            },
+            {
+                "command": "codingTracker.stopLocalServer",
+                "title": "%cmd.stopLocalServer%",
+                "category": "CodingTracker"
+            },
+            {
+                "command": "codingTracker.dumpVCSQueue",
+                "title": "debug: dump vcs queue",
+                "category": "CodingTracker"
+            }
+        ]
     },
     "repository": {
         "type": "git",
@@ -82,11 +89,14 @@
         "vscode": "^0.11.0"
     },
     "keywords": [
-        "vscode"
+        "vscode",
+        "record",
+        "report",
+        "multi-root ready"
     ],
     "dependencies": {
-        "tree-kill": "*",
-        "request": "*",
+        "request": "^2.83.0",
+        "tree-kill": "^1.2.0",
         "vscode-coding-tracker-server": "^0.4.1"
     }
 }
