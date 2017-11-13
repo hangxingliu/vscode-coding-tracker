@@ -10,12 +10,13 @@ Available display language: English, Russian, 简体中文, 繁體中文
 
 ## Current Version
 
-### 0.5.0 (Stage: checking bug, expected release date: 1th Nov.)
+### 0.5.0 (Stage: checking bug, expected release date: 15th Nov.)
 
-0. Add VCS(Git) repository and branch information tracking
-1. Add document line counts tracking
-2. Upgrade uploading protocol version to 4.0
-3. Optimize codes 
+0. Support multi-root workspace.
+1. Add VCS(Git) repository and branch information tracking
+2. Add document line counts tracking
+3. Upgrade uploading protocol version to 4.0
+4. Optimize codes 
 
 ### 0.4.2
 
