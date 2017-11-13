@@ -128,7 +128,7 @@ let EventHandler = {
                 uploadCodingTrackData();
             }
         }
-        activeDocument = ext.cloneTextDocumentObject(doc);
+        activeDocument = ext.cloneTextDocument(doc);
         //Retracking file open time again (Prevent has not retracked open time when upload open tracking data has been called)
         resetTrackOpenAndIntentlyTime(now);
         trackData.codingLong = trackData.lastCodingTime = trackData.firstCodingTime = 0;  
@@ -138,9 +138,15 @@ let EventHandler = {
             log.d('coding: ' + ext.dumpDocument(doc));
 
 		//Ignore the invalid coding file schemes
-		if (!doc || INVALID_CODING_DOCUMENT_SCHEMES.indexOf(doc.uri.scheme) >= 0 )
+        if (!doc || INVALID_CODING_DOCUMENT_SCHEMES.indexOf(doc.uri.scheme) >= 0 ) 
             return; 
-       
+        
+        if (doc.uri.scheme != 'file' && log.debugMode) {
+            let { uri } = doc;
+            vscode.window.showInformationMessage(`Unknown uri scheme(details in console): ${uri.scheme}: ${uri.toString()}`);
+            console.log(ext.dumpDocument(doc));
+        }
+        
         let now = Date.now();
         //If time is too short to calling this function then just ignore it 
         if (now - CODING_SHORTEST_UNIT_MS < trackData.lastCodingTime)
