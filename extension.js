@@ -1,6 +1,4 @@
 //@ts-check
-
-/// <reference path="vscode.d.ts" />
 /// <reference path="./lib/index.d.ts" />
 
 "use strict";
@@ -98,6 +96,7 @@ function isIgnoreDocument(doc) {
 
 /** Handler VSCode Event */
 let EventHandler = {
+    /** @param {vscode.TextEditor} doc */
     onIntentlyWatchingCodes: (textEditor) => {
         if (log.debugMode)
             log.d('watching intently: ' + ext.dumpEditor(textEditor));
@@ -113,6 +112,7 @@ let EventHandler = {
             trackData.lastIntentlyTime = now;
         }
     },
+    /** @param {vscode.TextDocument} doc */
     onActiveFileChange: (doc) => {
         if(log.debugMode)
             log.d('active file change: ' + ext.dumpDocument(doc));
@@ -133,6 +133,7 @@ let EventHandler = {
         resetTrackOpenAndIntentlyTime(now);
         trackData.codingLong = trackData.lastCodingTime = trackData.firstCodingTime = 0;  
     },
+    /** @param {vscode.TextDocument} doc */
     onFileCoding: (doc) => {
         if(log.debugMode)
             log.d('coding: ' + ext.dumpDocument(doc));
