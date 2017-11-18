@@ -142,10 +142,12 @@ let EventHandler = {
         if (!doc || INVALID_CODING_DOCUMENT_SCHEMES.indexOf(doc.uri.scheme) >= 0 ) 
             return; 
         
-        if (doc.uri.scheme != 'file' && log.debugMode) {
-            let { uri } = doc;
-            vscode.window.showInformationMessage(`Unknown uri scheme(details in console): ${uri.scheme}: ${uri.toString()}`);
-            console.log(ext.dumpDocument(doc));
+        if (log.debugMode) {
+            let { uri } = doc, { scheme } = uri;
+            if (scheme != 'untitled' && scheme != 'file') {
+                vscode.window.showInformationMessage(`Unknown uri scheme(details in console): ${scheme}: ${uri.toString()}`);
+                console.log(ext.dumpDocument(doc));
+            }    
         }
         
         let now = Date.now();
