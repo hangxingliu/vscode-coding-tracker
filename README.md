@@ -10,7 +10,7 @@ Available display language: English, Russian, 简体中文, 繁體中文
 
 ## Current Version
 
-### 0.5.0 (Stage: checking bug, expected release date: 15th Nov.)
+### 0.5.0 (Stage: fixing bug in server side, expected release date: 1st Dec.)
 
 0. Support multi-root workspace.
 1. Add VCS(Git) repository and branch information tracking
