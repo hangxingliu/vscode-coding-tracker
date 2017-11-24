@@ -18,21 +18,6 @@ Available display language: English, Russian, 简体中文, 繁體中文
 3. Upgrade uploading protocol version to 4.0
 4. Optimize codes 
 
-### 0.4.2
-
-0. Add configuration `showStatus` to controlling visibility of status bar information
-
-### 0.4.1
-
-0. Add Russian translations. (Include report page) (Thank [Dolgishev Viktor (@vdolgishev)][vdolgishev])
-1. Update server program to 0.4.1 (**Fixed fatal bug**)
-
-### 0.4.0
-
-0. Fixed the bug "could not upload error" caused by switching VSCode windows
-1. New report page (support i18n, detailed report, share ...) (vscode-coding-tracker-server => 0.4.0)
-2. Add configuration "moreThinkingTime". Adjust it to make report more accurate for your coding habits
-
 more version information: [CHANGELOG.md](CHANGELOG.md)
 
 ## How To Use (**Easy And Common Way**)
@@ -70,9 +55,9 @@ In this situation, the database file are located in `$HOME/.coding-tracker/`
 
 0. Set your vscode configuration `codingTracker.localServerMode` to `false`
 1. Open a terminal/command line
-2. Change path to `%HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.4.0`
-	- In Windows OS, enter command: `cd %HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.4.0`
-	- In Linux/Mac OS, enter command: `cd $HOME/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.4.0`
+2. Change path to `%HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.5.0`
+	- In Windows OS, enter command: `cd %HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.5.0`
+	- In Linux/Mac OS, enter command: `cd $HOME/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.5.0`
 3. Execute `npm i`
 4. Launch tracker server by using command: `npm start -- -t ${REPLACE_TO_YOUR_TOKEN}`
 	- Such as `npm start -- -t test_token`, means your upload token is `test_token`

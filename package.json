@@ -69,11 +69,6 @@
                 "command": "codingTracker.stopLocalServer",
                 "title": "%cmd.stopLocalServer%",
                 "category": "CodingTracker"
-            },
-            {
-                "command": "codingTracker.dumpVCSQueue",
-                "title": "debug: dump vcs queue",
-                "category": "CodingTracker"
             }
         ]
     },
@@ -99,6 +94,6 @@
     "dependencies": {
         "request": "^2.83.0",
         "tree-kill": "^1.2.0",
-        "vscode-coding-tracker-server": "^0.4.1"
+        "vscode-coding-tracker-server": "^0.5.0"
     }
 }

@@ -41,7 +41,9 @@ const INVALID_CODING_DOCUMENT_SCHEMES = [
 	//when you just look up output channel content, there will be a `onDidChangeTextDocument` be emitted
 	'output',
 	//This is a edit event emit from you debug console input box
-    'input'
+    'input',
+    //This scheme is appeared in vscode global replace diff preview editor
+    'private'
 ];
 
 const EMPTY = { document: null, textEditor: null };
@@ -144,7 +146,7 @@ let EventHandler = {
         
         if (log.debugMode) {
             let { uri } = doc, { scheme } = uri;
-            if (scheme != 'untitled' && scheme != 'file') {
+            if (scheme != 'file' && scheme != 'untitled') {
                 vscode.window.showInformationMessage(`Unknown uri scheme(details in console): ${scheme}: ${uri.toString()}`);
                 console.log(ext.dumpDocument(doc));
             }    
@@ -228,10 +230,10 @@ function activate(context) {
     
     // subscriptions.push(vscode.window.onDidChangeVisibleTextEditors(e => console.log('onDidChangeVisibleTextEditors', e)))
 
-    //TODO debug
-    subscriptions.push(vscode.commands.registerCommand('codingTracker.dumpVCSQueue', () => {
-        console.log(require('./lib/vcs/Git')._getVCSInfoQueue);
-    }));
+    // debug command
+    // subscriptions.push(vscode.commands.registerCommand('codingTracker.dumpVCSQueue', () => {
+    //     console.log(require('./lib/vcs/Git')._getVCSInfoQueue);
+    // }));
 }
 function deactivate() { 
     EventHandler.onActiveFileChange(null);
