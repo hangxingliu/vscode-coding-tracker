@@ -1,6 +1,6 @@
 # CHANGELOG
 
-### 0.5.0 (Stage: checking bug)
+### 0.5.0
 
 0. Support multi-root workspace.
 1. Add VCS(Git) repository and branch information tracking

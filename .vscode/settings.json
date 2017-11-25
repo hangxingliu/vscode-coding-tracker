@@ -10,7 +10,6 @@
 		"**/.DS_Store": true
 	},
 	"eslint.enable": true,
-	"typescript.autoImportSuggestions.enabled": false,
 	"cSpell.words": [
 		"intelli"
 	]

@@ -82,7 +82,7 @@
         "start": "./node_modules/.bin/coding-tracker-server"
     },
     "devDependencies": {
-        "@types/node": "^8.0.51",
+        "@types/node": "^8.0.53",
         "vscode": "^0.11.0"
     },
     "keywords": [

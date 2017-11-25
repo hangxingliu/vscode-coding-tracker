@@ -4,17 +4,11 @@ docs
 # ignore .vscode config
 .vscode
 
-# ignore .json folder
-.json
-
 # ignore vscode ts file
 lib/vscode.d.ts
 
 # ignore TODO file
 TODO.md
-
-#ignore js config file
-jsconfig.json
 
 # ignore database folder
 database

@@ -1,13 +1,15 @@
 # ".vscode" would not match xx/xx/.vscode 
+
 lib/vscode.d.ts
 lib/thirdPartyCodes/CHECK_UPDATE.js
+
 .vscode/**
-.json/**
+
 docs/**
 test/**
 TODO.md
 database
 npm-debug.log*
 .eslintrc.json
+
 DEBUG_SIGN_FILE
-IS_THIRD_PARTY_CODES_UPDATE.sh
