@@ -1,99 +1,104 @@
 {
-    "name": "vscode-coding-tracker",
-    "displayName": "Coding Tracker",
-    "description": "A coding activities tracker(time, file, type)",
-    "version": "0.5.0",
-    "license": "GPL-3.0",
-    "publisher": "hangxingliu",
-    "author": "hangxingliu",
-    "icon": "images/icon.png",
-    "engines": {
-        "vscode": "^1.0.0"
-    },
-    "categories": [
-        "Other"
-    ],
-    "activationEvents": [
-        "*"
-    ],
-    "main": "./extension",
-    "contributes": {
-        "configuration": {
-            "type": "object",
-            "title": "Coding Tracker configuration",
-            "properties": {
-                "codingTracker.uploadToken": {
-                    "type": "string",
-                    "default": "",
-                    "description": "%cfg.uploadToken%"
-                },
-                "codingTracker.serverURL": {
-                    "type": "string",
-                    "default": "http://127.0.0.1:10345",
-                    "description": "%cfg.serverURL%"
-                },
-                "codingTracker.computerId": {
-                    "type": "string",
-                    "default": "",
-                    "description": "%cfg.computerId%"
-                },
-                "codingTracker.localServerMode": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "%cfg.localServerMode%"
-                },
-                "codingTracker.moreThinkingTime": {
-                    "type": "number",
-                    "default": 0,
-                    "description": "%cfg.moreThinkingTime%"
-                },
-                "codingTracker.showStatus": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "%cfg.showStatus%"
-                }
-            }
-        },
-        "commands": [
-            {
-                "command": "codingTracker.showReport",
-                "title": "%cmd.showReport%",
-                "category": "CodingTracker"
-            },
-            {
-                "command": "codingTracker.startLocalServer",
-                "title": "%cmd.startLocalServer%",
-                "category": "CodingTracker"
-            },
-            {
-                "command": "codingTracker.stopLocalServer",
-                "title": "%cmd.stopLocalServer%",
-                "category": "CodingTracker"
-            }
-        ]
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/hangxingliu/vscode-coding-tracker"
-    },
-    "scripts": {
-        "check-third-party-codes-update": "node ./lib/thirdPartyCodes/CHECK_UPDATE.js",
-        "install-vscode-dts": "node ./lib/vscode.d.ts/FETCH.js",
-        "start": "./node_modules/.bin/coding-tracker-server"
-    },
-    "devDependencies": {
-        "@types/node": "^8.0.53",
-        "vscode": "^0.11.0"
-    },
-    "keywords": [
-        "vscode",
-        "record",
-        "report",
-        "multi-root ready"
-    ],
-    "dependencies": {
-        "request": "^2.83.0",
-        "tree-kill": "^1.2.0",
-        "vscode-coding-tracker-server": "^0.5.0"
-    }
+	"name": "vscode-coding-tracker",
+	"displayName": "Coding Tracker",
+	"description": "A coding activities tracker(time, file, type)",
+	"version": "0.5.0",
+	"license": "GPL-3.0",
+	"publisher": "hangxingliu",
+	"author": "hangxingliu",
+	"icon": "images/icon.png",
+	"engines": {
+		"vscode": "^1.0.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./extension",
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "Coding Tracker configuration",
+			"properties": {
+				"codingTracker.uploadToken": {
+					"type": "string",
+					"default": "",
+					"description": "%cfg.uploadToken%"
+				},
+				"codingTracker.serverURL": {
+					"type": "string",
+					"default": "http://127.0.0.1:10345",
+					"description": "%cfg.serverURL%"
+				},
+				"codingTracker.computerId": {
+					"type": "string",
+					"default": "",
+					"description": "%cfg.computerId%"
+				},
+				"codingTracker.localServerMode": {
+					"type": "boolean",
+					"default": true,
+					"description": "%cfg.localServerMode%"
+				},
+				"codingTracker.moreThinkingTime": {
+					"type": "number",
+					"default": 0,
+					"description": "%cfg.moreThinkingTime%"
+				},
+				"codingTracker.showStatus": {
+					"type": "boolean",
+					"default": true,
+					"description": "%cfg.showStatus%"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "codingTracker.showReport",
+				"title": "%cmd.showReport%",
+				"category": "CodingTracker"
+			},
+			{
+				"command": "codingTracker.startLocalServer",
+				"title": "%cmd.startLocalServer%",
+				"category": "CodingTracker"
+			},
+			{
+				"command": "codingTracker.stopLocalServer",
+				"title": "%cmd.stopLocalServer%",
+				"category": "CodingTracker"
+			}
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hangxingliu/vscode-coding-tracker"
+	},
+	"scripts": {
+		"check-third-party-codes-update": "node ./lib/thirdPartyCodes/CHECK_UPDATE.js",
+		"install-vscode-dts": "node ./lib/vscode.d.ts/FETCH.js",
+		"start": "./node_modules/.bin/coding-tracker-server"
+	},
+	"devDependencies": {
+		"@types/node": "^8.0.53",
+		"vscode": "^0.11.0"
+	},
+	"keywords": [
+		"vscode",
+		"record",
+		"report",
+		"multi-root ready"
+	],
+	"dependencies": {
+		"request": "^2.83.0",
+		"tree-kill": "^1.2.0",
+		"vscode-coding-tracker-server": "^0.5.0"
+	},
+	"__metadata": {
+		"id": "4a589c65-311e-4a3c-9f74-d02cc53c0288",
+		"publisherDisplayName": "Liu Yue",
+		"publisherId": "43f8445f-f00e-4e08-ab0f-21e398616231"
+	}
 }
