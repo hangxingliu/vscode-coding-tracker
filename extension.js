@@ -146,7 +146,12 @@ let EventHandler = {
         
         if (log.debugMode) {
             let { uri } = doc, { scheme } = uri;
-            if (scheme != 'file' && scheme != 'untitled') {
+            if (scheme != 'file' &&
+                scheme != 'untitled' &&
+                scheme != 'debug' &&
+                //scheme in vscode user settings (or quick search bar in user settings)
+                // vscode://defaultsettings/{0...N}/settings.json
+                scheme != 'vscode') {
                 vscode.window.showInformationMessage(`Unknown uri scheme(details in console): ${scheme}: ${uri.toString()}`);
                 console.log(ext.dumpDocument(doc));
             }    
