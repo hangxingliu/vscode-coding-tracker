@@ -6,7 +6,7 @@ And all part of tracker are open source and hosted on Github
 
 Available display language: English, Russian, 简体中文, 繁體中文
 
-![screenshots1](https://raw.githubusercontent.com/hangxingliu/vscode-coding-tracker-server/master/screenshots/1.png)
+![screenshots2](https://raw.githubusercontent.com/hangxingliu/vscode-coding-tracker-server/master/screenshots/2.jpg)
 
 ## Current Version
 
