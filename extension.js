@@ -43,7 +43,10 @@ const INVALID_CODING_DOCUMENT_SCHEMES = [
 	//This is a edit event emit from you debug console input box
     'input',
     //This scheme is appeared in vscode global replace diff preview editor
-    'private'
+    'private',
+    //This scheme is used for markdown preview document
+    //It will appear when you edit a markdown with aside preview
+    'markdown'
 ];
 
 const EMPTY = { document: null, textEditor: null };
