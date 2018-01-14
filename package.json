@@ -77,7 +77,6 @@
 		"url": "https://github.com/hangxingliu/vscode-coding-tracker"
 	},
 	"scripts": {
-		"check-third-party-codes-update": "node ./lib/thirdPartyCodes/CHECK_UPDATE.js",
 		"install-vscode-dts": "node ./lib/vscode.d.ts/FETCH.js",
 		"start": "./node_modules/.bin/coding-tracker-server"
 	},
