@@ -1,9 +1,6 @@
 //@ts-check
 /// <reference path="./lib/index.d.ts" />
 
-"use strict";
-
-//@ts-ignore
 let vscode       = require('vscode'),
     ext          = require('./lib/VSCodeHelper'),
     uploader     = require('./lib/Uploader'),
@@ -140,10 +137,28 @@ let EventHandler = {
     },
     /** @param {vscode.TextDocument} doc */
     onFileCoding: (doc) => {
+        
+        // onFileCoding is an alias of event `onDidChangeTextDocument`
+        //
+        // Here is description of this event excerpt from vscode extension docs page.
+        //   (Link: https://code.visualstudio.com/docs/extensionAPI/vscode-api)
+        // ```
+        //     An event that is emitted when a text document is changed. 
+        //     This usually happens when the contents changes but also when other things like the dirty - state changes.
+        // ```
+
         if(log.debugMode)
             log.d('coding: ' + ext.dumpDocument(doc));
 
-		//Ignore the invalid coding file schemes
+        // vscode bug: 
+        // Event `onDidChangeActiveTextEditor` be emitted with empty document when you open "Settings" editor.
+        // Then Event `onDidChangeTextDocument` be emitted even if you has not edited anything in setting document.
+        // I ignore empty activeDocument to keeping tracker up and avoiding exception like follow:
+        //    TypeError: Cannot set property 'lineCount' of null  // activeDocument.lineCount = ...
+        if (!activeDocument)
+            return ;
+
+		// Ignore the invalid coding file schemes
         if (!doc || INVALID_CODING_DOCUMENT_SCHEMES.indexOf(doc.uri.scheme) >= 0 ) 
             return; 
         
@@ -225,7 +240,7 @@ function activate(context) {
     //Tracking the file display when vscode open
     EventHandler.onActiveFileChange( (vscode.window.activeTextEditor || EMPTY).document);
 
-    //Listening vscode event to record coding activity    
+    //Listening vscode event to record coding activity
     subscriptions.push(vscode.workspace.onDidChangeTextDocument(e => EventHandler.onFileCoding( (e || EMPTY).document)  ));
     subscriptions.push(vscode.window.onDidChangeActiveTextEditor(e => EventHandler.onActiveFileChange((e || EMPTY).document )  ));
     //the below event happen means you change the cursor in the document.
