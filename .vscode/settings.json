@@ -9,9 +9,5 @@
 		"**/.hg": true,
 		"**/.DS_Store": true
 	},
-	"eslint.enable": true,
-	"cSpell.words": [
-		"defaultsettings",
-		"intelli"
-	]
+	"eslint.enable": true
 }

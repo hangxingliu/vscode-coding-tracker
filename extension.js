@@ -100,8 +100,8 @@ function isIgnoreDocument(doc) {
 let EventHandler = {
     /** @param {vscode.TextEditor} doc */
     onIntentlyWatchingCodes: (textEditor) => {
-        if (log.debugMode)
-            log.d('watching intently: ' + ext.dumpEditor(textEditor));
+        // if (log.debugMode)
+        //     log.d('watching intently: ' + ext.dumpEditor(textEditor));
         if (!textEditor || !textEditor.document)
             return;//Empty document
         let now = Date.now();
@@ -116,8 +116,8 @@ let EventHandler = {
     },
     /** @param {vscode.TextDocument} doc */
     onActiveFileChange: (doc) => {
-        if(log.debugMode)
-            log.d('active file change: ' + ext.dumpDocument(doc));
+        // if(log.debugMode)
+        //     log.d('active file change: ' + ext.dumpDocument(doc));
         let now = Date.now();
         // If there is a TextEditor opened before changed, should upload the track data
         if (activeDocument) {
@@ -147,8 +147,8 @@ let EventHandler = {
         //     This usually happens when the contents changes but also when other things like the dirty - state changes.
         // ```
 
-        if(log.debugMode)
-            log.d('coding: ' + ext.dumpDocument(doc));
+        // if(log.debugMode)
+        //     log.d('coding: ' + ext.dumpDocument(doc));
 
         // vscode bug: 
         // Event `onDidChangeActiveTextEditor` be emitted with empty document when you open "Settings" editor.
@@ -163,13 +163,16 @@ let EventHandler = {
             return; 
         
         if (log.debugMode) {
+            // fragment in this if condition is for catching unknown document scheme
             let { uri } = doc, { scheme } = uri;
             if (scheme != 'file' &&
                 scheme != 'untitled' &&
                 scheme != 'debug' &&
                 //scheme in vscode user settings (or quick search bar in user settings)
                 // vscode://defaultsettings/{0...N}/settings.json
-                scheme != 'vscode') {
+                scheme != 'vscode' &&
+                //scheme in vscode ineractive playground
+                scheme != 'walkThroughSnippet') {
                 vscode.window.showInformationMessage(`Unknown uri scheme(details in console): ${scheme}: ${uri.toString()}`);
                 console.log(ext.dumpDocument(doc));
             }    
