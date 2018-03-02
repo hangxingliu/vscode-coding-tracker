@@ -1,14 +1,22 @@
 # Visual Studio Code Coding Tracker
 
-Collect your coding activities. And give you a report group by date, languages, files, projects and more.
+A VSCode extension that track your coding activities and generate report about your coding.   
+You can know how much time you spent on each projects/files/computers/languages/branchs and total
+ by this extension.
 
-And all part of tracker are open source and hosted on Github
+And all part of this extension(included server program, documents) are open-source and hosted on Github.
 
-Available display language: English, Russian, 简体中文, 繁體中文
+This extension supports the follwing languages:   
+English, Russian(русский), Spanish(Español),
+ Simplified Chinese(简体中文) and Traditional Chinese(繁體中文).
 
 ![screenshots2](https://raw.githubusercontent.com/hangxingliu/vscode-coding-tracker-server/master/screenshots/2.jpg)
 
 ## Current Version
+
+### *0.5.1 (next release)*
+
+*Coming soon ...*
 
 ### 0.5.0
 
@@ -20,14 +28,14 @@ Available display language: English, Russian, 简体中文, 繁體中文
 
 more version information: [CHANGELOG.md](CHANGELOG.md)
 
-## How To Use (**Easy And Common Way**)
+## **How To Use (Easy And Common Way)**
 
-**Applicable to people dont want to read below long text and only work with VSCode in one computer**
+**Applicable to people dont want to read below long text and only use VSCode in one computer**
 
-1. Install this extension and reload VSCode (You must know how to do it, click install button)
-2. Coding...  Coding...  Coding... 
-3. Do you want to know how many time elapsed in your coding activity ? open command panel(press `F1`) in VSCode
-4. Searching and clicking command **"CodingTracker: Show your coding activities report"**. Then you will get it.
+1. Install this extension.
+2. Coding as you did before.
+3. Get your coding report by command **CodingTracker: Show your coding activities report**
+	- *press `F1` to open VSCode command panel, then search command above and click it*
 
 ## How To Use (Fully guide) **TLDR**
 
