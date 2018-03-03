@@ -1,6 +1,6 @@
 # Visual Studio Code Coding Tracker
 
-A VSCode extension that track your coding activities and generate report about your coding.   
+**A VSCode extension that track your coding activities and generate report about your coding.**   
 You can know how much time you spent on each projects/files/computers/languages/branchs and total
  by this extension.
 
@@ -9,6 +9,8 @@ And all part of this extension(included server program, documents) are open-sour
 This extension supports the follwing languages:   
 English, Russian(русский), Spanish(Español),
  Simplified Chinese(简体中文) and Traditional Chinese(繁體中文).
+
+## Screenshot
 
 ![screenshots2](https://raw.githubusercontent.com/hangxingliu/vscode-coding-tracker-server/master/screenshots/2.jpg)
 
@@ -41,9 +43,9 @@ more version information: [CHANGELOG.md](CHANGELOG.md)
 
 > VSCode Coding Tracker actually has two part: extension and server (C/S)
 >
-> And there a server program in the extension and it is the default server.
-> 
-> But also install server program to your remote server to tracking more coding actions in VSCode between different computers
+> And extension use internal server installed in *node_modules* by default.
+>
+> But you could install a server program on you server and use it on VSCode on different computers. 
 >
 > Server program repository: [vscode-coding-tracker-server](https://github.com/hangxingliu/vscode-coding-tracker-server)
 
@@ -55,9 +57,9 @@ Search `vscode-coding-tracker` in VSCode extension panel and install it.
 
 #### Local computer (controlled by VSCode)
 
-you need to do anything(And **don't** change the configuration `codingTracker.localServerMode` to `false`)
+You don't need to do anything.(And **don't** change the configuration `codingTracker.localServerMode` to `false`)
 
-In this situation, the database file are located in `$HOME/.coding-tracker/`
+In this situation, the database files are located in `$HOME/.coding-tracker/`
 
 #### Local computer (controlled by yourself)
 
@@ -124,7 +126,7 @@ Or, just open browser and enter `http://${YOUR_SERVER_HOST_NAME}:${PORT}/report/
 
 ## Third party codes and resource
 
-- This extension icon from [emojione](http://emojione.com/), This project help me a lot of (bkz I dont know how to use PS and dont have art sense).
+- The icon of this extension is from [emojione](http://emojione.com/). This project help me a lot of (bkz I dont know how to use PS and dont have art sense).
 - `lib/thirdPartyCodes/gitPaths.js` is modified from <https://github.com/DonJayamanne/gitHistoryVSCode/blob/master/src/helpers/gitPaths.ts>
 
 ### Contributors
@@ -134,7 +136,7 @@ Or, just open browser and enter `http://${YOUR_SERVER_HOST_NAME}:${PORT}/report/
 
 ## License
 
-- Extension(part except icon and third party codes) and server scripts: [GPL-3.0](LICENSE)
+- Extension(excluded icon and third party codes) and server scripts: [GPL-3.0](LICENSE)
 - Extension Icon[CC-BY 4.0](http://emojione.com/licensing/)
 - Third party codes license information in the front of third party code files
 

@@ -2,7 +2,7 @@
 
 ## Structure/File description
 
-[docs/FILE_LIST.md](docs/FILE_LIST.md)
+[docs/FILE-LIST.md](docs/FILE-LIST.md)
 
 ## Developing
 
