@@ -1,5 +1,13 @@
 # CHANGELOG
 
+### 0.6.0
+
+0. Upgrade server program (report page) to 0.6.0
+1. Optimize for some vscode internal documents. (*Default settings, markdown preview, interactive playground*)
+2. Add Español translations into extension.
+
+**Coming soon ...**
+
 ### 0.5.0
 
 0. Support multi-root workspace.

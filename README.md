@@ -16,9 +16,9 @@ English, Russian(русский), Spanish(Español),
 
 ## Current Version
 
-### *0.5.1 (next release)*
+### 0.6.0 (**Coming soon ...**)
 
-*Coming soon ...*
+**Coming soon ...**
 
 ### 0.5.0
 
@@ -65,9 +65,9 @@ In this situation, the database files are located in `$HOME/.coding-tracker/`
 
 0. Set your vscode configuration `codingTracker.localServerMode` to `false`
 1. Open a terminal/command line
-2. Change path to `%HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.5.0`
-	- In Windows OS, enter command: `cd %HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.5.0`
-	- In Linux/Mac OS, enter command: `cd $HOME/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.5.0`
+2. Change path to `%HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.6.0`
+	- In Windows OS, enter command: `cd %HOME%/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.6.0`
+	- In Linux/Mac OS, enter command: `cd $HOME/.vscode/extensions/hangxingliu.vscode-coding-tracker-0.6.0`
 3. Execute `npm i`
 4. Launch tracker server by using command: `npm start -- -t ${REPLACE_TO_YOUR_TOKEN}`
 	- Such as `npm start -- -t test_token`, means your upload token is `test_token`
