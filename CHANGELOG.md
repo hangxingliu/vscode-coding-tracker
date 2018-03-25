@@ -1,12 +1,14 @@
 # CHANGELOG
 
-### 0.6.0
+### 0.6.0 (2018/03/24)
 
-0. Upgrade server program (report page) to 0.6.0
-1. Optimize for some vscode internal documents. (*Default settings, markdown preview, interactive playground*)
-2. Add Español translations into extension.
-
-**Coming soon ...**
+1. Upgrade server program (report page) to 0.6.0
+	- export/download report as CSV
+	- merge report from different projects
+	- fix some bug on report page
+	- more compatible with old browsers and mobile browsers
+2. Optimize for some vscode internal documents. (*Default settings, markdown preview, interactive playground*)
+3. Add Español translations into extension.
 
 ### 0.5.0
 

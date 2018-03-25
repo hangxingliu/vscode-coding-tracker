@@ -4,11 +4,15 @@
 You can know how much time you spent on each projects/files/computers/languages/branchs and total
  by this extension.
 
-And all part of this extension(included server program, documents) are open-source and hosted on Github.
-
-This extension supports the follwing languages:   
+Supported languages:
 English, Russian(русский), Spanish(Español),
  Simplified Chinese(简体中文) and Traditional Chinese(繁體中文).
+
+All part of this extension(included server program, documents) are open-source and hosted on Github.
+
+> Links:  
+> [Server program Github repo](https://github.com/hangxingliu/vscode-coding-tracker)   
+> [VSCode extensions marketplace](https://marketplace.visualstudio.com/items?itemName=hangxingliu.vscode-coding-tracker)   
 
 ## Screenshot
 
@@ -16,17 +20,15 @@ English, Russian(русский), Spanish(Español),
 
 ## Current Version
 
-### 0.6.0 (**Coming soon ...**)
+### 0.6.0 (2018/03/25)
 
-**Coming soon ...**
-
-### 0.5.0
-
-0. Support multi-root workspace.
-1. Add VCS(Git) repository and branch information tracking
-2. Add document line counts tracking
-3. Upgrade uploading protocol version to 4.0
-4. Optimize codes 
+1. Upgrade server program (report page) to 0.6.0
+	- export/download report as CSV
+	- merge report from different projects
+	- fix some bug on report page
+	- more compatible with old browsers and mobile browsers
+2. Optimize for some vscode internal documents. (*Default settings, markdown preview, interactive playground*)
+3. Add Español translations into extension.
 
 more version information: [CHANGELOG.md](CHANGELOG.md)
 
@@ -122,22 +124,22 @@ Or, just open browser and enter `http://${YOUR_SERVER_HOST_NAME}:${PORT}/report/
 
 ## Author
 
-[LiuYue](https://github.com/hangxingliu)
+[LiuYue (hangxingliu)](https://github.com/hangxingliu)
+
+## Contributors
+
+- [Ted Piotrowski (@ted-piotrowski)][ted-piotrowski]
+- [Dolgishev Viktor (@vdolgishev)][vdolgishev]
 
 ## Third party codes and resource
 
 - The icon of this extension is from [emojione](http://emojione.com/). This project help me a lot of (bkz I dont know how to use PS and dont have art sense).
 - `lib/thirdPartyCodes/gitPaths.js` is modified from <https://github.com/DonJayamanne/gitHistoryVSCode/blob/master/src/helpers/gitPaths.ts>
 
-### Contributors
-
-- [Ted Piotrowski (@ted-piotrowski)][ted-piotrowski]
-- [Dolgishev Viktor (@vdolgishev)][vdolgishev]
-
 ## License
 
-- Extension(excluded icon and third party codes) and server scripts: [GPL-3.0](LICENSE)
-- Extension Icon[CC-BY 4.0](http://emojione.com/licensing/)
+- Extension(excluded icon and third party codes) and server scripts are licensed under [GPL-3.0](LICENSE)
+- Icon of extension is licensed under [CC-BY 4.0](http://emojione.com/licensing/)
 - Third party codes license information in the front of third party code files
 
 [vdolgishev]: https://github.com/vdolgishev

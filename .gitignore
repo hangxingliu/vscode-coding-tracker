@@ -1,3 +1,6 @@
+# ignore *.vsix (extension archive file)
+*.vsix
+
 # ignore vscode.d.ts files
 lib/vscode.d.ts/*.d.ts
 

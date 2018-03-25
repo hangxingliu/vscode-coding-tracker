@@ -1,4 +1,7 @@
-# ignore docs 
+# ignore vsix
+*.vsix
+
+# ignore docs
 docs
 
 # ignore .vscode config
