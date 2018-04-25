@@ -11,7 +11,7 @@ English, Russian(русский), Spanish(Español),
 All part of this extension(included server program, documents) are open-source and hosted on Github.
 
 > Links:  
-> [Server program Github repo](https://github.com/hangxingliu/vscode-coding-tracker)   
+> [Server program Github repo](https://github.com/hangxingliu/vscode-coding-tracker-server)   
 > [VSCode extensions marketplace](https://marketplace.visualstudio.com/items?itemName=hangxingliu.vscode-coding-tracker)   
 
 ## Screenshot
