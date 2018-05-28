@@ -2,7 +2,7 @@
 	"name": "vscode-coding-tracker",
 	"displayName": "Coding Tracker",
 	"description": "A coding activities tracker(time, file, type)",
-	"version": "0.6.0",
+	"version": "0.7.0-dev",
 	"license": "GPL-3.0",
 	"publisher": "hangxingliu",
 	"author": "hangxingliu",
@@ -84,7 +84,7 @@
 	},
 	"devDependencies": {
 		"@types/node": "^8.0.53",
-		"vscode": "^0.11.0"
+		"vscode": "^1.1.18"
 	},
 	"keywords": [
 		"vscode",
@@ -94,7 +94,7 @@
 	],
 	"dependencies": {
 		"hoek": "^5.0.3",
-		"request": "^2.85.0",
+		"request": "^2.87.0",
 		"tree-kill": "^1.2.0",
 		"vscode-coding-tracker-server": "^0.6.0"
 	},

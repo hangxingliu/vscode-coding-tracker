@@ -20,6 +20,13 @@ All part of this extension(included server program, documents) are open-source a
 
 ## Current Version
 
+### 0.7.0 (Next version)
+
+1. Fix local server launch faild on users who have not install `Node.js` or installed `nvm`.
+
+If you want use this version now,
+**you can uninstall old version in VSCode, And clone this repository into `$HOME/.vscode/extensions`**
+
 ### 0.6.0 (2018/03/25)
 
 1. Upgrade server program (report page) to 0.6.0
