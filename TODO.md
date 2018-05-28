@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] replace `spawn` to `fork` for user who have not installed Node.js (`fork` use `Node.js` from VSCode)
+- [x] replace `spawn` to `fork` for user who have not installed Node.js (`fork` use `Node.js` from VSCode)
 - [ ] Tracking terminal by integrated terminal API
 	- <https://code.visualstudio.com/updates/v1_23#_integrated-terminal-api>
 - [ ] Optimize tracking focus watching time by new API:
