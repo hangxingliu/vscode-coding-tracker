@@ -205,6 +205,7 @@ function updateConfigurations() {
     let configurations = ext.getConfig('codingTracker'),
         uploadToken = String(configurations.get('uploadToken')),
         uploadURL = String(configurations.get('serverURL')),
+        proxyURL = String(configurations.get('proxyURL')),
         computerId = String(configurations.get('computerId')),
         mtt = parseInt(configurations.get('moreThinkingTime')),
         enableStatusBar = configurations.get('showStatus');
@@ -215,7 +216,7 @@ function updateConfigurations() {
     moreThinkingTime = mtt;
 
     uploadURL = (uploadURL.endsWith('/') ? uploadURL : (uploadURL + '/')) + 'ajax/upload';
-    uploader.set(uploadURL, uploadToken);
+    uploader.set(uploadURL, uploadToken, proxyURL);
     uploadObject.init(computerId || `unknown-${require('os').platform()}`);
 
     localServer.updateConfig();
