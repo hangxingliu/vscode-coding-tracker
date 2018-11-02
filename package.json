@@ -51,6 +51,11 @@
 					"type": "boolean",
 					"default": true,
 					"description": "%cfg.showStatus%"
+				},
+				"codingTracker.proxyURL": {
+					"type": "string",
+					"default": "",
+					"description": "%cfg.proxyURL%"
 				}
 			}
 		},
