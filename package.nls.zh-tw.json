@@ -1,13 +1,13 @@
 {
-	"cmd.showReport": "查看你的編程記錄報告",
+	"cmd.showReport": "檢視你的編程記錄報告",
 	"cmd.startLocalServer":"啟動本地記錄伺服器",
 	"cmd.stopLocalServer":"關閉本地記錄伺服器",
 
 	"cfg.uploadToken": "你的記錄伺服器的上傳Token",
 	"cfg.serverURL": "你的記錄伺服器的URL",
-	"cfg.computerId": "你本機的標誌(用於查看報告的時候分辨不同的計算機)\n(默認值: 'unknown-${os.platform()}')",
-	"cfg.localServerMode": "伴隨VSCode啟動本地記錄伺服器\n(如果你希望保存編程記錄到遠端伺服器, 請設置為false)",
+	"cfg.computerId": "你本機的標示(用於檢視報告的時候分辨不同的計算機)\n(預設值: 'unknown-${os.platform()}')",
+	"cfg.localServerMode": "伴隨VSCode啟動本地記錄伺服器\n(如果你希望儲存編程記錄到遠端伺服器, 請設定為false)",
 	"cfg.moreThinkingTime": "如果你認為你在編程時需要更多時間思考.\n(這個值越大, 你在報告頁面上看到的統計時間就越多)\n單位: 毫秒. 取值範圍: [-1500, +Infinity)",
-	"cfg.showStatus": "在狀態欄顯示狀態信息",
-	"cfg.proxyURL": "Proxy URL used to upload to server"
+	"cfg.showStatus": "在狀態列顯示狀態資訊",
+	"cfg.proxy": "用於上傳記錄的網路代理.預設值: \n\"auto\"(將自動從選項 `http.proxy` 和系統環境變數中推斷代理資訊).\n這個選項的值也可以是: 一個代理伺服器的URL, false 或 \"no-proxy\""
 }

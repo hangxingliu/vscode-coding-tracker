@@ -52,10 +52,15 @@
 					"default": true,
 					"description": "%cfg.showStatus%"
 				},
-				"codingTracker.proxyURL": {
-					"type": "string",
-					"default": "",
-					"description": "%cfg.proxyURL%"
+				"codingTracker.proxy": {
+					"type": ["string", "boolean"],
+					"default": "auto",
+					"enum": [
+						"auto",
+						"no-proxy",
+						false
+					],
+					"description": "%cfg.proxy%"
 				}
 			}
 		},

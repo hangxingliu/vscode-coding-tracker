@@ -9,5 +9,5 @@
 	"cfg.localServerMode": "Начинать отслеживание локально при запуске VSCode\n(выключите это, если вы хотите сохранять данные на удаленный сервер",
 	"cfg.moreThinkingTime": "Если вы думаете, что время обдумывания во время программирования у вас продолжительное.\n(Чем больше число вы установите, тем больше число вы получите в отчете)\nМера измерений: milliseconds. Диапазон: [-1500, +Infinity)",
 	"cfg.showStatus": "Отображение состояния трекера(Загрузка / сервер) в строке состояния",
-	"cfg.proxyURL": "Proxy URL used to upload to server"
+	"cfg.proxy": "Network proxy for uploading.\n\"auto\" is the default value, which use proxy from config `http.proxy` and system environments.\nAnd you can use a proxy URL, false or \"no-proxy\" as the value"
 }

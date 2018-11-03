@@ -9,5 +9,5 @@
 	"cfg.localServerMode": "Inicie el servidor de seguimiento local después de que VSCode se haya lanzado\n(convertirlo en falso si desea almacenar datos en su servidor remoto)",
 	"cfg.moreThinkingTime": "Si crees que tu tiempo de pensar en la actividad de codificación es largo.\n(Cuanto mayor sea el número que establezca, más tiempo lo verá en la página del informe)\nUnidad: milisegundos. Sección: [-1500, +Infinito)",
 	"cfg.showStatus": "Mostrar el estado del rastreador (carga / servidor) en la barra de estado",
-	"cfg.proxyURL": "Proxy URL used to upload to server"
+	"cfg.proxy": "Network proxy for uploading.\n\"auto\" is the default value, which use proxy from config `http.proxy` and system environments.\nAnd you can use a proxy URL, false or \"no-proxy\" as the value"
 }
