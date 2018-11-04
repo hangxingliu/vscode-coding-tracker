@@ -1,13 +1,15 @@
 //@ts-check
 /// <reference path="./lib/index.d.ts" />
 
-let vscode       = require('vscode'),
-    ext          = require('./lib/VSCodeHelper'),
-    uploader     = require('./lib/Uploader'),
-    log          = require('./lib/Log'),
-    statusBar    = require('./lib/StatusBarManager'),
-    localServer  = require('./lib/LocalServer'),
-    uploadObject = require('./lib/UploadObject');
+const vscode		= require('vscode');
+const ext			= require('./lib/VSCodeHelper');
+const uploader		= require('./lib/Uploader');
+const log			= require('./lib/Log');
+const statusBar 	= require('./lib/StatusBarManager');
+const localServer 	= require('./lib/LocalServer');
+const uploadObject 	= require('./lib/UploadObject');
+
+const { getProxyConfiguration } = require('./lib/GetProxyConfiguration');
 
 /** How many ms in 1s */
 const SECOND = 1000;
@@ -71,7 +73,7 @@ function uploadOpenTrackData(now) {
     if (!isIgnoreDocument(activeDocument)) {
         let longest = trackData.lastIntentlyTime + MAX_ALLOW_NOT_INTENTLY_MS + moreThinkingTime,
             long = Math.min(now, longest) - trackData.openTime;
-        
+
         uploadObject.generateOpen(activeDocument, trackData.openTime, long)
             .then(uploader.upload);
     }
@@ -88,7 +90,7 @@ function uploadCodingTrackData() {
     //Re-tracking coding track data
     trackData.codingLong =
         trackData.lastCodingTime =
-        trackData.firstCodingTime = 0;    
+        trackData.firstCodingTime = 0;
 }
 
 /** Check a TextDocument, Is it a ignore document(null/'inmemory') */
@@ -133,24 +135,24 @@ let EventHandler = {
         activeDocument = ext.cloneTextDocument(doc);
         //Retracking file open time again (Prevent has not retracked open time when upload open tracking data has been called)
         resetTrackOpenAndIntentlyTime(now);
-        trackData.codingLong = trackData.lastCodingTime = trackData.firstCodingTime = 0;  
+        trackData.codingLong = trackData.lastCodingTime = trackData.firstCodingTime = 0;
     },
     /** @param {vscode.TextDocument} doc */
     onFileCoding: (doc) => {
-        
+
         // onFileCoding is an alias of event `onDidChangeTextDocument`
         //
         // Here is description of this event excerpt from vscode extension docs page.
         //   (Link: https://code.visualstudio.com/docs/extensionAPI/vscode-api)
         // ```
-        //     An event that is emitted when a text document is changed. 
+        //     An event that is emitted when a text document is changed.
         //     This usually happens when the contents changes but also when other things like the dirty - state changes.
         // ```
 
         // if(log.debugMode)
         //     log.d('coding: ' + ext.dumpDocument(doc));
 
-        // vscode bug: 
+        // vscode bug:
         // Event `onDidChangeActiveTextEditor` be emitted with empty document when you open "Settings" editor.
         // Then Event `onDidChangeTextDocument` be emitted even if you has not edited anything in setting document.
         // I ignore empty activeDocument to keeping tracker up and avoiding exception like follow:
@@ -159,9 +161,9 @@ let EventHandler = {
             return ;
 
 		// Ignore the invalid coding file schemes
-        if (!doc || INVALID_CODING_DOCUMENT_SCHEMES.indexOf(doc.uri.scheme) >= 0 ) 
-            return; 
-        
+        if (!doc || INVALID_CODING_DOCUMENT_SCHEMES.indexOf(doc.uri.scheme) >= 0 )
+            return;
+
         if (log.debugMode) {
             // fragment in this if condition is for catching unknown document scheme
             let { uri } = doc, { scheme } = uri;
@@ -175,16 +177,16 @@ let EventHandler = {
                 scheme != 'walkThroughSnippet') {
                 vscode.window.showInformationMessage(`Unknown uri scheme(details in console): ${scheme}: ${uri.toString()}`);
                 console.log(ext.dumpDocument(doc));
-            }    
+            }
         }
-        
+
         let now = Date.now();
-        //If time is too short to calling this function then just ignore it 
+        //If time is too short to calling this function then just ignore it
         if (now - CODING_SHORTEST_UNIT_MS < trackData.lastCodingTime)
             return;
         // Update document line count
         activeDocument.lineCount = doc.lineCount;
-        
+
         //If is first time coding in this file, record time
         if (!trackData.firstCodingTime)
             trackData.firstCodingTime = now;
@@ -202,13 +204,18 @@ let EventHandler = {
 /** when extension launch or vscode config change */
 function updateConfigurations() {
      //CodingTracker Configuration
-    let configurations = ext.getConfig('codingTracker'),
-        uploadToken = String(configurations.get('uploadToken')),
-        uploadURL = String(configurations.get('serverURL')),
-        proxyURL = String(configurations.get('proxyURL')),
-        computerId = String(configurations.get('computerId')),
-        mtt = parseInt(configurations.get('moreThinkingTime')),
-        enableStatusBar = configurations.get('showStatus');
+	const extensionCfg = ext.getConfig('codingTracker');
+	const uploadToken = String(extensionCfg.get('uploadToken'));
+	const computerId = String(extensionCfg.get('computerId'));
+	const enableStatusBar = extensionCfg.get('showStatus');
+	let mtt = parseInt(extensionCfg.get('moreThinkingTime'));
+	let uploadURL = String(extensionCfg.get('serverURL'));
+
+	const httpCfg = ext.getConfig('http');
+	const baseHttpProxy = httpCfg ? httpCfg.get('proxy') : undefined;
+
+	const overwriteHttpProxy = extensionCfg.get('proxy');
+	const proxy = getProxyConfiguration(baseHttpProxy, overwriteHttpProxy);
 
     // fixed wrong more thinking time configuration value
     if (isNaN(mtt)) mtt = 0;
@@ -216,7 +223,7 @@ function updateConfigurations() {
     moreThinkingTime = mtt;
 
     uploadURL = (uploadURL.endsWith('/') ? uploadURL : (uploadURL + '/')) + 'ajax/upload';
-    uploader.set(uploadURL, uploadToken, proxyURL);
+    uploader.set(uploadURL, uploadToken, proxy);
     uploadObject.init(computerId || `unknown-${require('os').platform()}`);
 
     localServer.updateConfig();
@@ -227,18 +234,18 @@ function activate(context) {
 
     //Declare for add disposable inside easy
     let subscriptions = context.subscriptions;
-    
+
     uploadObject.init();
 
     //Initialize local server(launch local server if localServer config is true)
     localServer.init(context);
-    
+
     //Initialize Uploader Module
     uploader.init();
     //Update configurations first time
     updateConfigurations();
 
-    //Listening workspace configurations change    
+    //Listening workspace configurations change
     vscode.workspace.onDidChangeConfiguration(updateConfigurations);
 
     //Tracking the file display when vscode open
@@ -254,7 +261,7 @@ function activate(context) {
     // Maybe I will add "onDidChangeVisibleTextEditors" in extension in next version
     // For detect more detailed editor information
     // But this event will always include debug-input box if you open debug panel one time
-    
+
     // subscriptions.push(vscode.window.onDidChangeVisibleTextEditors(e => console.log('onDidChangeVisibleTextEditors', e)))
 
     // debug command
@@ -262,7 +269,7 @@ function activate(context) {
     //     console.log(require('./lib/vcs/Git')._getVCSInfoQueue);
     // }));
 }
-function deactivate() { 
+function deactivate() {
     EventHandler.onActiveFileChange(null);
     localServer.dispose();
 }
