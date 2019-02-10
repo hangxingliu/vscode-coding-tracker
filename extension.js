@@ -103,7 +103,7 @@ let EventHandler = {
     /** @param {vscode.TextEditor} doc */
     onIntentlyWatchingCodes: (textEditor) => {
         // if (log.debugMode)
-        //     log.d('watching intently: ' + ext.dumpEditor(textEditor));
+		//   log.debug('watching intently: ' + ext.dumpEditor(textEditor));
         if (!textEditor || !textEditor.document)
             return;//Empty document
         let now = Date.now();
@@ -119,7 +119,7 @@ let EventHandler = {
     /** @param {vscode.TextDocument} doc */
     onActiveFileChange: (doc) => {
         // if(log.debugMode)
-        //     log.d('active file change: ' + ext.dumpDocument(doc));
+        //     log.debug('active file change: ' + ext.dumpDocument(doc));
         let now = Date.now();
         // If there is a TextEditor opened before changed, should upload the track data
         if (activeDocument) {
@@ -150,7 +150,7 @@ let EventHandler = {
         // ```
 
         // if(log.debugMode)
-        //     log.d('coding: ' + ext.dumpDocument(doc));
+        //     log.debug('coding: ' + ext.dumpDocument(doc));
 
         // vscode bug:
         // Event `onDidChangeActiveTextEditor` be emitted with empty document when you open "Settings" editor.
@@ -176,7 +176,7 @@ let EventHandler = {
                 //scheme in vscode ineractive playground
                 scheme != 'walkThroughSnippet') {
                 vscode.window.showInformationMessage(`Unknown uri scheme(details in console): ${scheme}: ${uri.toString()}`);
-                console.log(ext.dumpDocument(doc));
+				log.debug(ext.dumpDocument(doc));
             }
         }
 
@@ -262,16 +262,17 @@ function activate(context) {
     // For detect more detailed editor information
     // But this event will always include debug-input box if you open debug panel one time
 
-    // subscriptions.push(vscode.window.onDidChangeVisibleTextEditors(e => console.log('onDidChangeVisibleTextEditors', e)))
+    // subscriptions.push(vscode.window.onDidChangeVisibleTextEditors(e => log.debug('onDidChangeVisibleTextEditors', e)))
 
     // debug command
     // subscriptions.push(vscode.commands.registerCommand('codingTracker.dumpVCSQueue', () => {
-    //     console.log(require('./lib/vcs/Git')._getVCSInfoQueue);
+    //     log.debug(require('./lib/vcs/Git')._getVCSInfoQueue);
     // }));
 }
 function deactivate() {
     EventHandler.onActiveFileChange(null);
-    localServer.dispose();
+	localServer.dispose();
+	log.end();
 }
 
 
