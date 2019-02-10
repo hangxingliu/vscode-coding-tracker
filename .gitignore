@@ -1,6 +1,10 @@
 # ignore *.vsix (extension archive file)
 *.vsix
 
+# ignore generated i18n files
+package.nls.json
+package.nls.*.json
+
 # ignore vscode.d.ts files
 lib/vscode.d.ts/*.d.ts
 

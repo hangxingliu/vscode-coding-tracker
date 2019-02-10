@@ -16,7 +16,7 @@
 - `lib/vscode.d.ts/FETCH.hs`: A script to fetch latest vscode.d.ts
 - `lib/vscode.d.ts/*.d.ts`: VSCode extension API definition files
 - `lib/index.d.ts`: Typs in the extension definition file 
-- `utils/validate-i18n.js`: A script to validate I18N files 
+- `utils/setup-i18n.js`: A script for setup VSCode extension i18n files 
 - `package.json` Extension/NPM description file (defined meta info, extension commands and more ...)
 - `package.nls.json` i18n file for package.json
 - `package.nls.*.json` i18n files for package.json

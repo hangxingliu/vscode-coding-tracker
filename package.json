@@ -92,8 +92,8 @@
 	"scripts": {
 		"install-vscode-dts": "node ./lib/vscode.d.ts/FETCH.js",
 		"start": "./node_modules/.bin/coding-tracker-server",
-		"test": "npm run test-i18n",
-		"test-i18n": "node ./utils/validate-i18n.js"
+		"test": "npm run setup-i18n",
+		"setup-i18n": "node ./utils/setup-i18n.js"
 	},
 	"devDependencies": {
 		"@types/node": "^8.0.53",

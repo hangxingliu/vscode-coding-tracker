@@ -1,6 +1,10 @@
 # ignore vsix
 *.vsix
 
+# ignore generated i18n files
+package.nls.json
+package.nls.*.json
+
 # ignore docs
 docs
 
