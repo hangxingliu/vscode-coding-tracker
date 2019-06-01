@@ -96,8 +96,8 @@
 		"setup-i18n": "node ./utils/setup-i18n.js"
 	},
 	"devDependencies": {
-		"@types/node": "^8.0.53",
-		"vscode": "^1.1.18"
+		"@types/node": "^12.0.4",
+		"vscode": "^1.1.34"
 	},
 	"keywords": [
 		"vscode",
@@ -107,7 +107,7 @@
 	],
 	"dependencies": {
 		"request": "^2.88.0",
-		"tree-kill": "^1.2.0",
+		"tree-kill": "^1.2.1",
 		"uuid": "^3.3.2",
 		"vscode-coding-tracker-server": "^0.6.0"
 	},

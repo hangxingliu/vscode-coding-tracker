@@ -16,6 +16,8 @@ npm-debug.log*
 DEBUG_SIGN_FILE
 
 # any archives
+*.7z
+*.zip
 *.tgz
 *.tar
 *.vsix
