@@ -20,9 +20,8 @@
         "no-unreachable": "warn",
         "constructor-super": "warn",
         "valid-typeof": "warn",
-        
 
         "no-unused-vars": "warn",
-        "no-console": "off"
+        "no-console": "error"
     }
 }
