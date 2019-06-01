@@ -1,15 +1,18 @@
 //@ts-check
 /// <reference path="./lib/index.d.ts" />
 
-const vscode		= require('vscode');
-const ext			= require('./lib/VSCodeHelper');
-const uploader		= require('./lib/Uploader');
-const log			= require('./lib/Log');
-const statusBar 	= require('./lib/StatusBarManager');
-const localServer 	= require('./lib/LocalServer');
-const uploadObject 	= require('./lib/UploadObject');
+const vscode = require('vscode');
 
+const ext = require('./lib/VSCodeHelper');
+const uploader = require('./lib/Uploader');
+const log = require('./lib/Log');
+const statusBar = require('./lib/StatusBarManager');
+const localServer = require('./lib/LocalServer');
+const uploadObject = require('./lib/UploadObject');
+
+const { isDebugMode } = require('./lib/Constants');
 const { getProxyConfiguration } = require('./lib/GetProxyConfiguration');
+
 
 /** How many ms in 1s */
 const SECOND = 1000;
@@ -102,7 +105,7 @@ function isIgnoreDocument(doc) {
 let EventHandler = {
     /** @param {vscode.TextEditor} doc */
     onIntentlyWatchingCodes: (textEditor) => {
-        // if (log.debugMode)
+        // if (isDebugMode)
 		//   log.debug('watching intently: ' + ext.dumpEditor(textEditor));
         if (!textEditor || !textEditor.document)
             return;//Empty document
@@ -118,7 +121,7 @@ let EventHandler = {
     },
     /** @param {vscode.TextDocument} doc */
     onActiveFileChange: (doc) => {
-        // if(log.debugMode)
+        // if(isDebugMode)
         //     log.debug('active file change: ' + ext.dumpDocument(doc));
         let now = Date.now();
         // If there is a TextEditor opened before changed, should upload the track data
@@ -149,7 +152,7 @@ let EventHandler = {
         //     This usually happens when the contents changes but also when other things like the dirty - state changes.
         // ```
 
-        // if(log.debugMode)
+        // if(isDebugMode)
         //     log.debug('coding: ' + ext.dumpDocument(doc));
 
         // vscode bug:
@@ -164,7 +167,7 @@ let EventHandler = {
         if (!doc || INVALID_CODING_DOCUMENT_SCHEMES.indexOf(doc.uri.scheme) >= 0 )
             return;
 
-        if (log.debugMode) {
+        if (isDebugMode) {
             // fragment in this if condition is for catching unknown document scheme
             let { uri } = doc, { scheme } = uri;
             if (scheme != 'file' &&
@@ -175,7 +178,7 @@ let EventHandler = {
                 scheme != 'vscode' &&
                 //scheme in vscode ineractive playground
                 scheme != 'walkThroughSnippet') {
-                vscode.window.showInformationMessage(`Unknown uri scheme(details in console): ${scheme}: ${uri.toString()}`);
+                // vscode.window.showInformationMessage(`Unknown uri scheme(details in console): ${scheme}: ${uri.toString()}`);
 				log.debug(ext.dumpDocument(doc));
             }
         }
@@ -231,7 +234,6 @@ function updateConfigurations() {
 }
 
 function activate(context) {
-
     //Declare for add disposable inside easy
     let subscriptions = context.subscriptions;
 

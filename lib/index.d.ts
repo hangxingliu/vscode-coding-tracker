@@ -8,13 +8,6 @@ type VCSCacheMap = {
 	};
 }
 
-type LoggerFunction = (...fields) => void;
-type Logger = {
-	e: LoggerFunction;
-	w: LoggerFunction;
-	d: LoggerFunction;
-	debugMode: boolean;
-}
 type UploadObject = {
 	version: '4.0';
 	token: string;
@@ -44,7 +37,7 @@ type UploadObject = {
 	vcs_type: string;
 	vcs_repo: string;
 	vcs_branch: string;
-	
+
 	/**
 	 * Line counts
 	 */
