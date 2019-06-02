@@ -12,7 +12,7 @@ const uploadObject = require('./lib/UploadObject');
 
 const { isDebugMode } = require('./lib/Constants');
 const { getProxyConfiguration } = require('./lib/GetProxyConfiguration');
-
+const { generateDiagnoseLogFile } = require('./lib/EnvironmentProbe');
 
 /** How many ms in 1s */
 const SECOND = 1000;
@@ -234,7 +234,9 @@ function updateConfigurations() {
 }
 
 function activate(context) {
-    //Declare for add disposable inside easy
+	generateDiagnoseLogFile();
+
+	//Declare for add disposable inside easy
     let subscriptions = context.subscriptions;
 
     uploadObject.init();
