@@ -16,6 +16,10 @@
 	"activationEvents": [
 		"*"
 	],
+	"extensionKind": [
+		"ui", 
+		"workspace"
+	],
 	"main": "./extension",
 	"dependencies": {
 		"axios": "^0.24.0",
